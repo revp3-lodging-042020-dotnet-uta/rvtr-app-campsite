@@ -28,9 +28,10 @@
       </div>
 
       <!--previous page / next page buttons-->
-      <div>
-        <div>Previous page</div>
-        <div>Next page</div>
+      <br><br>
+      <div class="columns is-mobile">
+        <div class="column is-one-fifth"><a *ngIf="true" (click)="Paginate(-5)">&lt;Previous Page</a></div>
+        <div class="column is-one-fifth is-offset-8"><a *ngIf="true" (click)="Paginate(5)">Next Page&gt;</a></div>
       </div>
 
     </div>
