@@ -4,25 +4,27 @@ import { Observable } from 'rxjs';
 import { concatMap, map } from 'rxjs/operators';
 import { ConfigService } from '../config/config.service';
 import { Lodging } from '../../data/lodging.model';
+import { Review } from 'src/app/data/review.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LodgingService {
+export class ReviewService {
+
   private readonly apiUrl$: Observable<string>;
 
   /**
-   * Represents the _Lodging Service_ `constructor` method
+   * Represents the _Review Service_ `constructor` method
    *
    * @param config ConfigService
    * @param http HttpClient
    */
   constructor(private readonly config: ConfigService, private readonly http: HttpClient) {
-    this.apiUrl$ = config.get().pipe(map((cfg) => `${cfg.api.lodging}/Lodging`));
+    this.apiUrl$ = config.get().pipe(map((cfg) => `${cfg.api.lodging}/Review`));
   }
 
   /**
-   * Represents the _Lodging Service_ `delete` method
+   * Represents the _Review Service_ `delete` method
    *
    * @param id string
    */
@@ -33,30 +35,30 @@ export class LodgingService {
   }
 
   /**
-   * Represents the _Lodging Service_ `get` method
+   * Represents the _Review Service_ `get` method
    *
    * @param id string
    */
-  get(id?: string): Observable<Lodging[]> {
+  get(id?: string): Observable<Review[]> {
     const options = id ? { params: new HttpParams().set('id', id) } : {};
-    return this.apiUrl$.pipe(concatMap((url) => this.http.get<Lodging[]>(url, options)));
+    return this.apiUrl$.pipe(concatMap((url) => this.http.get<Review[]>(url, options)));
   }
 
   /**
-   * Represents the _Lodging Service_ `post` method
+   * Represents the _Review Service_ `post` method
    *
-   * @param lodging Lodging
+   * @param review Review
    */
-  post(lodging: Lodging): Observable<boolean> {
-    return this.apiUrl$.pipe(concatMap((url) => this.http.post<boolean>(url, lodging)));
+  post(review: Review): Observable<boolean> {
+    return this.apiUrl$.pipe(concatMap((url) => this.http.post<boolean>(url, review)));
   }
 
   /**
-   * Represents the _Lodging Service_ `put` method
+   * Represents the _Review Service_ `put` method
    *
-   * @param lodging Lodging
+   * @param review Review
    */
-  put(lodging: Lodging): Observable<Lodging> {
-    return this.apiUrl$.pipe(concatMap((url) => this.http.put<Lodging>(url, lodging)));
+  put(review: Review): Observable<Lodging> {
+    return this.apiUrl$.pipe(concatMap((url) => this.http.put<Lodging>(url, review)));
   }
 }
