@@ -9,5 +9,7 @@ export class LodgingComponent implements OnInit {
 
   constructor() {}
 
+  Paginate(change: number): void {}
+
   ngOnInit(): void {}
 }
