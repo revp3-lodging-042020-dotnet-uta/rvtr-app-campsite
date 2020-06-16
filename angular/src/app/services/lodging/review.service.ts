@@ -28,9 +28,10 @@ export class ReviewService {
    *
    * @param id string
    */
-  delete(id: string): Observable<boolean> {
+  delete(id: string): Observable<Review> {
     return this.apiUrl$.pipe(
-      concatMap((url) => this.http.delete<boolean>(url, { params: { id } }))
+      map(url => id ? `${url}/${id}` : url),
+      concatMap((url) => this.http.delete<Review>(url, { params: { id } }))
     );
   }
 
@@ -39,9 +40,11 @@ export class ReviewService {
    *
    * @param id string
    */
-  get(id?: string): Observable<Review[]> {
-    const options = id ? { params: new HttpParams().set('id', id) } : {};
-    return this.apiUrl$.pipe(concatMap((url) => this.http.get<Review[]>(url, options)));
+  get(id?: string, params?: HttpParams): Observable<Review[]> {
+    const options = params ? { params } : {};
+    return this.apiUrl$.pipe(
+      map(url => id ? `${url}/${id}` : url),
+      concatMap((url) => this.http.get<Review[]>(url, options)));
   }
 
   /**
@@ -49,8 +52,8 @@ export class ReviewService {
    *
    * @param review Review
    */
-  post(review: Review): Observable<boolean> {
-    return this.apiUrl$.pipe(concatMap((url) => this.http.post<boolean>(url, review)));
+  post(review: Review): Observable<Review> {
+    return this.apiUrl$.pipe(concatMap((url) => this.http.post<Review>(url, review)));
   }
 
   /**
