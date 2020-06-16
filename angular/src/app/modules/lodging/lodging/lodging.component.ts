@@ -2,7 +2,7 @@ import { LodgingService } from './../../../services/lodging/lodging.service';
 import { Component, OnInit } from '@angular/core';
 import { Lodging } from 'src/app/data/lodging.model';
 import { HttpParams } from '@angular/common/http';
-import { LodgingQueryParams } from '../types/lodging-query-params';
+import { LodgingQueryParams } from '../@types/lodging-query-params';
 
 @Component({
   selector: 'uic-lodging',
