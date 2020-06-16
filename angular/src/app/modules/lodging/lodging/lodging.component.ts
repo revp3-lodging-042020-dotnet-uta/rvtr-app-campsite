@@ -12,6 +12,8 @@ export class LodgingComponent implements OnInit {
 
   constructor(private lodgingService: LodgingService) {}
 
+  ngOnInit(): void {}
+
   queryParamsSample(): void {
     let params = new HttpParams();
     params = params.set(LodgingQueryParams.Limit, '5');
@@ -21,5 +23,5 @@ export class LodgingComponent implements OnInit {
     this.lodgingService.get(undefined, params).subscribe(_ => {});
   }
 
-  ngOnInit(): void { }
+  Paginate(change: number): void {}
 }
