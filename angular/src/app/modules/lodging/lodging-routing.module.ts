@@ -1,17 +1,13 @@
 import { LodgingSearchFormComponent } from './lodging-search-form/lodging-search-form.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LodgingComponent } from './lodging/lodging.component';
-import { LodgingDetailComponent } from './lodging-detail/lodging-detail.component';
 
-const routes: Routes = [{ component: LodgingComponent, path: '' },
-                        { component: LodgingDetailComponent, path: 'detail' },
-                        { component: LodgingSearchFormComponent, path: 'form' }
-                       ];
+const routes: Routes = [{ component: LodgingComponent, path: '' }];
 
 @NgModule({
-  declarations: [],
+  declarations: [LodgingComponent],
   exports: [RouterModule],
-  imports: [RouterModule.forChild(routes)]
+  imports: [RouterModule.forChild(routes)],
 })
-export class LodgingRoutingModule { }
+export class LodgingRoutingModule {}
