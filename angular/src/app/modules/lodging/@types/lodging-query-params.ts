@@ -6,6 +6,8 @@ export enum LodgingQueryParams {
     BedsAtLeast = 'BedsAtLeast',
     BedRoomsAtLeast = 'BedRoomsAtLeast',
     BathsAtLeast = 'BathsAtLeast',
+    HasBedType = 'HasBedType',
+    HasAmenity = 'HasAmenity',
     SortOrder = 'SortOrder',
     SortKey = 'SortKey',
 }

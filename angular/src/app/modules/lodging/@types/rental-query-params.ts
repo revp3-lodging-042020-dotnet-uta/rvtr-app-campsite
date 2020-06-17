@@ -4,6 +4,8 @@ export enum RentalQueryParams {
     BedsAtLeast = 'BedsAtLeast',
     BedRoomsAtLeast = 'BedRoomsAtLeast',
     BathsAtLeast = 'BathsAtLeast',
+    HasBedType = 'HasBedType',
+    HasAmenity = 'HasAmenity',
     SortKey = 'Sortkey',
     SortOrder = 'SortOrder',
 }
