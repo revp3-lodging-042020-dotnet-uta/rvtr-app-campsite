@@ -1,4 +1,3 @@
-import { LodgingSearchFormComponent } from './lodging-search-form/lodging-search-form.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LodgingComponent } from './lodging/lodging.component';
@@ -6,7 +5,7 @@ import { LodgingComponent } from './lodging/lodging.component';
 const routes: Routes = [{ component: LodgingComponent, path: '' }];
 
 @NgModule({
-  declarations: [LodgingComponent],
+  declarations: [],
   exports: [RouterModule],
   imports: [RouterModule.forChild(routes)],
 })
