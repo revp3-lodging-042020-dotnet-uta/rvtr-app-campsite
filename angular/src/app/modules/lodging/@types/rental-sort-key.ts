@@ -4,6 +4,7 @@ export enum RentalSortKey
     Name = 'Name',
     Description = 'Description',
 
+    Beds = 'Beds',
     Bedrooms = 'Bedrooms',
     Bathrooms = 'Bathrooms',
     Occupancy = 'Occupancy',

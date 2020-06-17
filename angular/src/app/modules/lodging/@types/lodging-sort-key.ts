@@ -17,6 +17,7 @@ export enum LodgingSortKey
     Street = 'Location.Address.Street',
 
     Rentals = 'Rentals',
+    Beds = 'Beds',
     Bedrooms = 'Bedrooms',
     Bathrooms = 'Bathrooms',
     Occupancy = 'Occupancy',
