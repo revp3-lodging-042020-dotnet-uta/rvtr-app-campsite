@@ -1,1 +1,24 @@
 <p>lodging-display-review works!</p>
+
+<table>
+    <thead>
+        <tr>Review Id</tr>
+        <tr>Account Id</tr>
+        <tr>Comment</tr>
+        <tr>Date Created</tr>
+        <tr>Rating</tr>
+        <tr>Lodging Id</tr>
+
+    </thead>
+    <tbody>
+        <div *ngFor="let theReview of reviews">
+            <td style="display:none;">{{theReview.Id}}</td>
+            <td style="display:none;">{{theReview.AccountId}}</td>
+            <td>{{theReview.Comment}}</td>
+            <td>{{theReview.DateCreated}}</td>
+            <td>{{theReview.Rating}}</td>
+            <td style="display:none;">{{theReview.LodgingId}}</td>
+
+        </div>
+    </tbody>
+</table>
