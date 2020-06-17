@@ -1,50 +1,71 @@
-<!-- search form -->
-<form>
-  <!--location search container-->
-  <div>
-    <label for="location-search">Search</label>
-    <input type="text" placeholder="Location" name="location-search" id="location-search">
-  </div>
+<form action="">
+  <div class="tile is-parent">
 
-  <!--radius & rating container-->
-  <div>
-
-    <div>
-      <label for="search-radius">Radius</label>
-      <select>
-        <option>5 miles</option>
-        <option>10 miles</option>
-        <option>15 miles</option>
-        <option>25 miles</option>
-        <option>50 miles</option>
-      </select>
+    <div class="tile is-child">
+      <div class="field">
+        <label for="location" class="label">Location</label>
+        <div class="control">
+          <input class="input" id="location" name="location" placeholder="Add the destination" type="text">
+        </div>
+      </div>
     </div>
 
-    <div>
-      <label for="rating"></label>
-      <div>
-        <div>X</div>
-        <div>X</div>
-        <div>X</div>
-        <div>X</div>
-        <div>X</div>
+    <div class="tile is-child">
+      <div class="field">
+        <label for="location" class="label">Beds</label>
+        <div class="control">
+          <input class="input" id="location" name="location" placeholder="Number of beds" type="number">
+        </div>
+      </div>
+    </div>
+
+    <div class="tile is-child">
+      <div class="field">
+        <label for="location" class="label">Baths</label>
+        <div class="control">
+          <input class="input" id="location" name="location" placeholder="Number of baths" type="number">
+        </div>
+      </div>
+    </div>
+
+    <div class="tile is-child">
+      <label for="location" class="label">Rating</label>
+      <div class="field has-addons">
+        <div class="control">
+          <input class="input" id="location" name="location" placeholder="Rating" type="number">
+        </div>
+        <div class="control">
+          <button class="button is-primary" type="button">Search</button>
+        </div>
       </div>
     </div>
 
   </div>
 
-  <!--beds / baths / price container-->
-  <div>
+  <div class="tile is-parent">
 
-    <div>
-      <label for="bed-count">Beds</label>
-      <input name="bed-count" id="bed-count" placeholder="# Beds" type="number">
+    <div class="tile is-child">
+      <div class="field">
+        <label for="location" class="label">Sort By</label>
+        <div class="select">
+          <select>
+            <option *ngFor="let field of sortByFields" value="{{field.value}}">{{field.name}}</option>
+          </select>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <label for="bath-count">Baths</label>
-      <input name="bath-count" id="bath-count" placeholder="# Baths" type="number">
+    <div class="tile is-child">
+      <div class="field">
+        <label for="location" class="label">Order By</label>
+        <div class="select">
+          <select>
+            <option *ngFor="let field of sortOrderFields" value="{{field.value}}">{{field.name}}</option>
+          </select>
+        </div>
+      </div>
     </div>
 
   </div>
+
 </form>
