@@ -1,50 +1,43 @@
 <form action="">
   <div class="tile is-parent">
 
-    <div class="tile is-child">
+    <div class="tile is-child is-3">
       <div class="field">
         <label for="location" class="label">Location</label>
         <div class="control">
-          <input class="input" id="location" name="location" placeholder="Add the destination" type="text">
+          <input class="input" id="location" name="location" placeholder="Location" type="text">
         </div>
       </div>
     </div>
 
-    <div class="tile is-child">
+    <div class="tile is-child is-1">
       <div class="field">
         <label for="location" class="label">Beds</label>
         <div class="control">
-          <input class="input" id="location" name="location" placeholder="Number of beds" type="number">
+          <input class="input" id="location" name="location" placeholder="Beds" type="number">
         </div>
       </div>
     </div>
 
-    <div class="tile is-child">
+    <div class="tile is-child is-1">
       <div class="field">
         <label for="location" class="label">Baths</label>
         <div class="control">
-          <input class="input" id="location" name="location" placeholder="Number of baths" type="number">
+          <input class="input" id="location" name="location" placeholder="Baths" type="number">
         </div>
       </div>
     </div>
 
-    <div class="tile is-child">
-      <label for="location" class="label">Rating</label>
-      <div class="field has-addons">
+    <div class="tile is-child is-1">
+      <div class="field">
+        <label for="location" class="label">Rating</label>
         <div class="control">
-          <input class="input" id="location" name="location" placeholder="Rating" type="number">
-        </div>
-        <div class="control">
-          <button class="button is-primary" type="button">Search</button>
+          <input class="input" id="location" name="location" placeholder="Baths" type="number">
         </div>
       </div>
     </div>
 
-  </div>
-
-  <div class="tile is-parent">
-
-    <div class="tile is-child">
+    <div class="tile is-child is-2 width-min-content">
       <div class="field">
         <label for="location" class="label">Sort By</label>
         <div class="select">
@@ -55,13 +48,22 @@
       </div>
     </div>
 
-    <div class="tile is-child">
+    <div class="tile is-child is-2 width-min-content">
       <div class="field">
         <label for="location" class="label">Order By</label>
         <div class="select">
           <select>
             <option *ngFor="let field of sortOrderFields" value="{{field.value}}">{{field.name}}</option>
           </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile is-child is-1">
+      <div class="field">
+        <label for="location" class="label">&nbsp;</label>
+        <div class="control">
+          <button class="button is-primary" type="button">Search</button>
         </div>
       </div>
     </div>

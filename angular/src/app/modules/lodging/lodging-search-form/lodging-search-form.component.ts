@@ -6,10 +6,11 @@ import { SortOrder } from '../@types/sort-order';
 @Component({
   selector: 'uic-lodging-search-form',
   templateUrl: './lodging-search-form.component.html',
+  styleUrls: ['./lodging-search-form.scss']
 })
 export class LodgingSearchFormComponent implements OnInit {
 
-  private sortByFields: {name: string, value: LodgingSortKey }[] = [
+  public sortByFields: {name: string, value: LodgingSortKey }[] = [
     { name: 'Average rating', value: LodgingSortKey.ReviewAverageRating },
     { name: 'Number of reviews', value: LodgingSortKey.ReviewCount },
     { name: 'Number of beds', value: LodgingSortKey.Beds },
@@ -18,9 +19,9 @@ export class LodgingSearchFormComponent implements OnInit {
     { name: 'Name', value: LodgingSortKey.Name },
   ];
 
-  private sortOrderFields: {name: string, value: SortOrder }[] = [
-    { name: 'Ascending', value: SortOrder.Ascending },
+  public sortOrderFields: {name: string, value: SortOrder }[] = [
     { name: 'Descending', value: SortOrder.Descending },
+    { name: 'Ascending', value: SortOrder.Ascending },
   ];
 
   constructor() {}
