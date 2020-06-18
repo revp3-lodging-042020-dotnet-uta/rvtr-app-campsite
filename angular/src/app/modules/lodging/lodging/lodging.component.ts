@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Lodging } from 'src/app/data/lodging.model';
 import { HttpParams } from '@angular/common/http';
 import { LodgingQueryParams } from '../@types/lodging-query-params';
+import Limit = LodgingQueryParams.Limit;
 
 @Component({
   selector: 'uic-lodging',
@@ -10,18 +11,30 @@ import { LodgingQueryParams } from '../@types/lodging-query-params';
 })
 export class LodgingComponent implements OnInit {
 
-  constructor(private lodgingService: LodgingService) {}
+  public lodgings: Lodging[];
 
-  ngOnInit(): void {}
+  // Amount of lodgings to load at one time.
+  private limit = 5;
+  // Current offset for lodge pagination.
+  private offset = 0;
 
-  queryParamsSample(): void {
-    let params = new HttpParams();
-    params = params.set(LodgingQueryParams.Limit, '5');
-    params = params.set(LodgingQueryParams.RatingAtLeast, '3');
+  constructor(private lodgingService: LodgingService) { }
 
-    // use undefined to skip the optional 'id' parameter
-    this.lodgingService.get(undefined, params).subscribe(_ => {});
+  ngOnInit(): void {
+    this.loadLodgings();
   }
 
-  Paginate(change: number): void {}
+  loadLodgings() {
+    let params = new HttpParams();
+    params = params.set(Limit, '5');
+
+    this.lodgingService.get(undefined, params).subscribe(response => {
+      this.lodgings = response;
+    });
+  }
+
+  nextPage() {}
+
+  previousPage() {}
 }
+
