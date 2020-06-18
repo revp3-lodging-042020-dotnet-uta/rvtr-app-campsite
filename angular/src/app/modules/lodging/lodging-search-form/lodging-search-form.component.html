@@ -1,11 +1,11 @@
-<form action="">
+<form [formGroup]="searchForm" action="" (ngSubmit)="onSubmit()">
   <div class="tile is-parent">
 
     <div class="tile is-child is-3">
       <div class="field">
         <label for="location" class="label">Location</label>
         <div class="control">
-          <input class="input" id="location" name="location" placeholder="Location" type="text">
+          <input formControlName="location" class="input" id="location" name="location" placeholder="Location" type="text">
         </div>
       </div>
     </div>
@@ -14,7 +14,7 @@
       <div class="field">
         <label for="location" class="label">Beds</label>
         <div class="control">
-          <input class="input" id="location" name="location" placeholder="Beds" type="number">
+          <input formControlName="beds" class="input" id="location" name="location" placeholder="Beds" type="number">
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
       <div class="field">
         <label for="location" class="label">Baths</label>
         <div class="control">
-          <input class="input" id="location" name="location" placeholder="Baths" type="number">
+          <input formControlName="baths" class="input" id="location" name="location" placeholder="Baths" type="number">
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
       <div class="field">
         <label for="location" class="label">Rating</label>
         <div class="control">
-          <input class="input" id="location" name="location" placeholder="Baths" type="number">
+          <input formControlName="rating" class="input" id="location" name="location" placeholder="Baths" type="number">
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
       <div class="field">
         <label for="location" class="label">Sort By</label>
         <div class="select">
-          <select>
+          <select formControlName="sortBy">
             <option *ngFor="let field of sortByFields" value="{{field.value}}">{{field.name}}</option>
           </select>
         </div>
@@ -52,7 +52,7 @@
       <div class="field">
         <label for="location" class="label">Order By</label>
         <div class="select">
-          <select>
+          <select formControlName="orderBy">
             <option *ngFor="let field of sortOrderFields" value="{{field.value}}">{{field.name}}</option>
           </select>
         </div>
@@ -63,7 +63,7 @@
       <div class="field">
         <label for="location" class="label">&nbsp;</label>
         <div class="control">
-          <button class="button is-primary" type="button">Search</button>
+          <button class="button is-primary" type="submit">Search</button>
         </div>
       </div>
     </div>

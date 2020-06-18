@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Lodging } from 'src/app/data/lodging.model';
 import { LodgingSortKey } from '../@types/lodging-sort-key';
 import { SortOrder } from '../@types/sort-order';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'uic-lodging-search-form',
@@ -9,6 +10,8 @@ import { SortOrder } from '../@types/sort-order';
   styleUrls: ['./lodging-search-form.scss']
 })
 export class LodgingSearchFormComponent implements OnInit {
+
+  @Output() submitted = new EventEmitter<FormGroup>();
 
   public sortByFields: {name: string, value: LodgingSortKey }[] = [
     { name: 'Average rating', value: LodgingSortKey.ReviewAverageRating },
@@ -24,7 +27,22 @@ export class LodgingSearchFormComponent implements OnInit {
     { name: 'Ascending', value: SortOrder.Ascending },
   ];
 
+  searchForm = new FormGroup({
+    location: new FormControl(''),
+    beds: new FormControl(''),
+    baths: new FormControl(''),
+    rating: new FormControl(''),
+    sortBy: new FormControl(LodgingSortKey.ReviewAverageRating),
+    orderBy: new FormControl(SortOrder.Descending),
+  });
+
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  onSubmit(): void {
+    console.log('submitted form');
+    this.submitted.emit(this.searchForm);
+  }
 }

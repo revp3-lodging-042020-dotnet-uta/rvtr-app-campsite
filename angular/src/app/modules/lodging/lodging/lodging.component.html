@@ -1,5 +1,10 @@
 <section class="hero is-fullheight-with-navbar">
   <div class="hero-head" >
+
+    <div class="container">
+      <uic-lodging-search-form (submitted)="onSearchSubmit($event)"></uic-lodging-search-form>
+    </div>
+
     <div class="container" *ngFor="let lodgings of lodgings">
       <br>
       <h1 class="title is-2">{{lodgings.name}}</h1>

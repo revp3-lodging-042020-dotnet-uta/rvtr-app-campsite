@@ -4,6 +4,8 @@ import { Lodging } from 'src/app/data/lodging.model';
 import { HttpParams } from '@angular/common/http';
 import { LodgingQueryParams } from '../@types/lodging-query-params';
 import Limit = LodgingQueryParams.Limit;
+import { FormGroup } from '@angular/forms';
+import { LodgingSearchFormField } from '../lodging-search-form/lodging-search-form-field';
 
 @Component({
   selector: 'uic-lodging',
@@ -36,5 +38,9 @@ export class LodgingComponent implements OnInit {
   nextPage() {}
 
   previousPage() {}
+
+  onSearchSubmit(searchForm: FormGroup) {
+    console.log(`location field = ${searchForm.get(LodgingSearchFormField.Location).value}`);
+  }
 }
 
