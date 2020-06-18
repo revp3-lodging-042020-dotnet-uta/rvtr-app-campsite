@@ -31,6 +31,8 @@ export class LodgingComponent implements OnInit {
   loadLodgings() {
     this.setSearchLimit();
 
+    this.searchParams = this.searchParams.set(LodgingQueryParams.IncludeImages, true.toString());
+
     this.lodgingService.get(undefined, this.searchParams).subscribe(response => {
       this.lodgings = response;
     });

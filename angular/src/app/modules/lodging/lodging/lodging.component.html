@@ -5,15 +5,15 @@
       <uic-lodging-search-form (submitted)="onSearchSubmit($event)"></uic-lodging-search-form>
     </div>
 
-    <div class="container" *ngFor="let lodgings of lodgings">
+    <div class="container" *ngFor="let lodge of lodgings">
       <br>
-      <h1 class="title is-2">{{lodgings.name}}</h1>
+      <h1 class="title is-2">{{lodge.name}}</h1>
       <!--IMAGES START-->
       <div class="tile is-ancestor">
         <div class="tile is-6 is-parent is-vertical">
           <div class="tile is-child">
             <figure class="image is-16by9">
-              <img alt="placeholder image" src="https://bulma.io/images/placeholders/1280x960.png">
+              <img alt="placeholder image" src="{{lodge.images[0].image}}">
             </figure>
           </div>
         </div>
@@ -22,25 +22,25 @@
             <div class="tile is-parent is-vertical">
               <div class="tile is-child">
                 <figure class="image is-5by3">
-                  <img alt="placeholder image" src="https://bulma.io/images/placeholders/1280x960.png">
+                  <img alt="placeholder image" src="{{lodge.images[1].image}}">
                 </figure>
               </div>
               <div class="tile is-child">
                 <figure class="image is-5by3">
-                  <img alt="placeholder image" src="https://bulma.io/images/placeholders/1280x960.png">
+                  <img alt="placeholder image" src="{{lodge.images[2].image}}">
                 </figure>
               </div>
             </div>
             <div class="tile is-parent is-vertical">
               <div class="tile is-child">
                 <figure class="image is-5by3">
-                  <img alt="placeholder image" src="https://bulma.io/images/placeholders/1280x960.png">
+                  <img alt="placeholder image" src="{{lodge.images[3].image}}">
                 </figure>
               </div>
 
               <div class="tile is-child">
                 <figure class="image is-5by3">
-                  <img alt="placeholder image" src="https://bulma.io/images/placeholders/1280x960.png">
+                  <img alt="placeholder image" src="{{lodge.images[4].image}}">
                 </figure>
               </div>
             </div>
@@ -48,13 +48,13 @@
             <div class="tile is-parent is-vertical">
               <div class="tile is-child">
                 <figure class="image is-5by3">
-                  <img alt="placeholder image" src="https://bulma.io/images/placeholders/1280x960.png">
+                  <img alt="placeholder image" src="{{lodge.images[5].image}}">
                 </figure>
               </div>
 
               <div class="tile is-child">
                 <figure class="image is-5by3">
-                  <img alt="placeholder image" src="https://bulma.io/images/placeholders/1280x960.png">
+                  <img alt="placeholder image" src="{{lodge.images[6].image}}">
                 </figure>
               </div>
             </div>
@@ -66,7 +66,7 @@
               <div class="level">
                 <div class="level-item">
                   <div>
-                    <p class="title has-text-light is-3">{{lodgings.name}}</p>
+                    <p class="title has-text-light is-3">{{lodge.name}}</p>
                   </div>
                 </div>
               </div>
@@ -79,16 +79,16 @@
         <div class="tile is-3">
           <div class="tile is-parent">
             <div class="tile box is-child">
-              <h2 class="title is-4">overview</h2>
+              <h2 class="title is-4">Overview</h2>
 
               <div class="level">
                 <div class="level-left">
                   <div class="level-item">
                     <div>
                       <p class="heading">Address</p>
-                      <p class="title is-6">There is no dummy info to pull</p>
-                      <p class="title is-6">There is no dummy info to pull</p>
-                      <p class="title is-6">No Dummy info to pull</p>
+                      <p class="title is-6">{{lodge.location.address.street}}</p>
+                      <p class="title is-6">{{lodge.location.address.city}}, {{lodge.location.address.stateProvince}} {{lodge.location.address.postalCode}}</p>
+                      <p class="title is-6">{{lodge.location.address.country}}</p>
                     </div>
                   </div>
                 </div>
@@ -98,7 +98,7 @@
                 <div class="level-left">
                   <div class="level-item">
                     <div>
-                      <p class="heading">amenity</p>
+                      <p class="heading">Amenity</p>
                       <p>
                         <span class="icon">
                           <i aria-hidden="true" class="fas fa-coffee"></i>
@@ -119,29 +119,29 @@
         </div>
         <div class="tile">
           <div class="tile is-parent">
-            <div class="tile box is-child" *ngFor ="let rentals of lodgings.rentals" >
-              <h2 class="title is-4">rooms</h2>
-              <div class="level" *ngFor ="let rooms of rentals.rentalUnit.bedrooms" >
+            <div class="tile box is-child" *ngFor ="let rental of lodge.rentals" >
+              <h2 class="title is-4">Rooms</h2>
+              <div class="level" *ngFor ="let room of rental.rentalUnit.bedrooms" >
                 <div class="level-item">
                   <figure class="image is-64x64">
-                    <img alt="placeholder image" class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                    <img alt="placeholder image" class="is-rounded" src="{{room.images[0].image}}">
                   </figure>
                 </div>
                 <div class="level-item has-text-centered" >
                   <div>
                     <p class="heading">Beds</p>
-                    <p class="title is-6">{{rooms.bedCount}} {{rooms.bedType}}</p>
+                    <p class="title is-6">{{room.bedCount}} {{room.bedType}}</p>
                   </div>
                 </div>
                 <div class="level-item has-text-centered">
                   <div>
                     <p class="heading">Room</p>
-                    <p class="title is-6">{{rooms.roomNumber}}</p>
+                    <p class="title is-6">{{room.roomNumber}}</p>
                   </div>
                 </div>
                 <div class="level-item has-text-centered">
                   <div>
-                    <p class="heading">amenity</p>
+                    <p class="heading">Amenity</p>
                     <p>
                       <span class="icon">
                         <i aria-hidden="true" class="fas fa-coffee"></i>
@@ -156,7 +156,6 @@
                   </div>
                 </div>
               </div>
-              <hr>
             </div>
           </div>
 

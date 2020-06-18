@@ -2,6 +2,7 @@ export enum LodgingQueryParams {
     Limit = 'Limit',
     Offset = 'Offset',
     City = 'City',
+    IncludeImages = 'IncludeImages',
     RatingAtLeast = 'RatingAtLeast',
     SearchRadius = 'SearchRadius',
     BedsAtLeast = 'BedsAtLeast',
