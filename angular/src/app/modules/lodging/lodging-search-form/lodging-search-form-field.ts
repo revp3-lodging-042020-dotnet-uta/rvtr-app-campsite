@@ -1,5 +1,5 @@
 export const enum LodgingSearchFormField {
-    Location = 'location',
+    City = 'city',
     Beds = 'beds',
     Baths = 'baths',
     Rating = 'rating',

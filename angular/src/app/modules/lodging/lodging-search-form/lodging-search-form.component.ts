@@ -3,6 +3,9 @@ import { Lodging } from 'src/app/data/lodging.model';
 import { LodgingSortKey } from '../@types/lodging-sort-key';
 import { SortOrder } from '../@types/sort-order';
 import { FormControl, FormGroup } from '@angular/forms';
+import { HttpParams } from '@angular/common/http';
+import { LodgingSearchFormField } from './lodging-search-form-field';
+import { LodgingQueryParams } from '../@types/lodging-query-params';
 
 @Component({
   selector: 'uic-lodging-search-form',
@@ -11,7 +14,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LodgingSearchFormComponent implements OnInit {
 
-  @Output() submitted = new EventEmitter<FormGroup>();
+  @Output() submitted = new EventEmitter<HttpParams>();
 
   public sortByFields: {name: string, value: LodgingSortKey }[] = [
     { name: 'Average rating', value: LodgingSortKey.ReviewAverageRating },
@@ -28,7 +31,7 @@ export class LodgingSearchFormComponent implements OnInit {
   ];
 
   searchForm = new FormGroup({
-    location: new FormControl(''),
+    city: new FormControl(''),
     beds: new FormControl(''),
     baths: new FormControl(''),
     rating: new FormControl(''),
@@ -42,7 +45,42 @@ export class LodgingSearchFormComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
-    console.log('submitted form');
-    this.submitted.emit(this.searchForm);
+    this.submitted.emit(this.generateQueryParams());
+  }
+
+  generateQueryParams(): HttpParams {
+    let params = new HttpParams();
+
+    const city = this.searchForm.get(LodgingSearchFormField.City).value;
+    if (city) {
+      params = params.set(LodgingQueryParams.City, city.toString());
+    }
+
+    const beds = this.searchForm.get(LodgingSearchFormField.Beds).value;
+    if (beds) {
+      params = params.set(LodgingQueryParams.BedsAtLeast, beds.toString());
+    }
+
+    const baths = this.searchForm.get(LodgingSearchFormField.Baths).value;
+    if (baths) {
+      params = params.set(LodgingQueryParams.BathsAtLeast, baths.toString());
+    }
+
+    const rating = this.searchForm.get(LodgingSearchFormField.Rating).value;
+    if (rating) {
+      params = params.set(LodgingQueryParams.RatingAtLeast, rating.toString());
+    }
+
+    const sortBy = this.searchForm.get(LodgingSearchFormField.SortBy).value;
+    if (sortBy) {
+      params = params.set(LodgingQueryParams.SortKey, sortBy);
+    }
+
+    const orderBy = this.searchForm.get(LodgingSearchFormField.OrderBy).value;
+    if (orderBy) {
+      params = params.set(LodgingQueryParams.SortOrder, orderBy);
+    }
+
+    return params;
   }
 }
