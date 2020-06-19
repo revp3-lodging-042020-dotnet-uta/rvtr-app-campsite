@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LodgingComponent } from './lodging.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpParams } from '@angular/common/http';
 
 describe('LodgingComponent', () => {
   let component: LodgingComponent;
@@ -21,5 +22,16 @@ describe('LodgingComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should run search submit', () => {
+    expect(component.searchParams === new HttpParams());
+
+    const sampleParams = new HttpParams();
+    sampleParams.set('test', 'test');
+
+    component.onSearchSubmit(sampleParams);
+
+    expect(component.searchParams.get('test') === 'test');
   });
 });

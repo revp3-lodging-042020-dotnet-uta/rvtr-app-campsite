@@ -20,7 +20,7 @@ export class LodgingComponent implements OnInit {
   // Current offset for lodge pagination.
   private offset = 0;
 
-  private searchParams: HttpParams = new HttpParams();
+  public searchParams: HttpParams = new HttpParams();
 
   constructor(private lodgingService: LodgingService) { }
 
