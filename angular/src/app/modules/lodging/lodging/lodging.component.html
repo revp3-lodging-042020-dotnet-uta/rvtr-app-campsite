@@ -230,7 +230,7 @@
 <!--previous page / next page buttons-->
 <br><br>
 <div class="columns is-mobile">
-  <div class="column is-one-fifth"><a *ngIf="true" (click)="previousPage()">&lt;Previous Page</a></div>
-  <div class="column is-one-fifth is-offset-8"><a *ngIf="true" (click)="nextPage()">Next Page&gt;</a></div>
+  <div class="column is-one-fifth"><a *ngIf="prevPage" (click)="previousPage()">&lt;Previous Page</a></div>
+  <div class="column is-one-fifth is-offset-8"><a *ngIf="nxtPage" (click)="nextPage()">Next Page&gt;</a></div>
 </div>
 </section>
