@@ -69,7 +69,7 @@ describe('LodgingService', () => {
 
     tick();
 
-    req = httpTestingController.expectOne('test/Lodging/0?id=0'); 
+    req = httpTestingController.expectOne('test/Lodging/0?id=0');
     req.flush(JSON.stringify(true));
   }));
 

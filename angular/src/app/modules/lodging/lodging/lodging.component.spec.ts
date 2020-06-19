@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LodgingComponent } from './lodging.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpParams } from '@angular/common/http';
+import { LodgingQueryParams } from '../@types/lodging-query-params';
 
 describe('LodgingComponent', () => {
   let component: LodgingComponent;
@@ -34,4 +35,13 @@ describe('LodgingComponent', () => {
 
     expect(component.searchParams.get('test') === 'test');
   });
+
+  it('should set search limit', () => {
+    expect(component.searchParams === new HttpParams());
+
+    component.setSearchLimit();
+
+    expect(component.searchParams.get(LodgingQueryParams.Limit) === component.limit.toString());
+  });
+
 });
