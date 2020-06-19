@@ -72,14 +72,10 @@ export class LodgingSearchFormComponent implements OnInit {
     }
 
     const sortBy = this.searchForm.get(LodgingSearchFormField.SortBy).value;
-    if (sortBy) {
-      params = params.set(LodgingQueryParams.SortKey, sortBy);
-    }
+    params = params.set(LodgingQueryParams.SortKey, sortBy);
 
     const orderBy = this.searchForm.get(LodgingSearchFormField.OrderBy).value;
-    if (orderBy) {
-      params = params.set(LodgingQueryParams.SortOrder, orderBy);
-    }
+    params = params.set(LodgingQueryParams.SortOrder, orderBy);
 
     return params;
   }
