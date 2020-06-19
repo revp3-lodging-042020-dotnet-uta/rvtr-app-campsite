@@ -20,32 +20,13 @@ export class LodgingReviewModalComponent implements OnInit {
     if (event) {
       event.stopPropagation();
     }
-
-    // Disable body scrolling.
-    //document.querySelector('html').classList.add('is-clipped');
-
-    // Opens modal.
     this.lodgingReviewModal.nativeElement.classList.add('is-active');
-
-    //this.newBookingForm();
-
-    // Sets lodging property.
-    //this.lodging = lodging;
   }
 
-  /**
-   * Hides the booking form modal.
-   *
-   * @param event Mouse event information. Used to stop propagation.
-   */
   public closeModal(event?: MouseEvent): void {
     if (event) {
       event.stopPropagation();
     }
-
-    // Enable body scrolling.
-    //document.querySelector('html').classList.remove('is-clipped');
-
     this.lodgingReviewModal.nativeElement.classList.remove('is-active');
   }
 }
