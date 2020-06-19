@@ -48,6 +48,13 @@ describe('LodgingComponent', () => {
     }
   };
 
+  const Amenities = [
+    [],
+    [{blank: null}],
+    [{blank: null}, {blank: null}],
+    [{blank: null}, {blank: null}, {blank: null}]
+  ];
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LodgingComponent],
@@ -91,4 +98,15 @@ describe('LodgingComponent', () => {
     expect(component.lodgings.length).toEqual(1);
   });
 
+  it('should get icon name from amenity', () => {
+    expect(component.getIconName('Pool')).toEqual('swimmer');
+    expect(component.getIconName('Coffee')).toEqual('coffee');
+  });
+
+  it('should get blanks up to 3 to fill amenities', () => {
+    expect(component.countAmenities(Amenities[0])).toEqual(Amenities[3]);
+    expect(component.countAmenities(Amenities[1])).toEqual(Amenities[2]);
+    expect(component.countAmenities(Amenities[2])).toEqual(Amenities[1]);
+    expect(component.countAmenities(Amenities[3])).toEqual(Amenities[0]);
+  });
 });
