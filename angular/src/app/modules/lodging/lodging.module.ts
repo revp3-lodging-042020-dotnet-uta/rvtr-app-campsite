@@ -6,9 +6,10 @@ import { LodgingRoutingModule } from './lodging-routing.module';
 import { LodgingComponent } from './lodging/lodging.component';
 import { LodgingDetailComponent } from './lodging-detail/lodging-detail.component';
 import { LodgingSearchFormComponent } from './lodging-search-form/lodging-search-form.component';
+import { LodgingReviewModalComponent } from './lodging-review-modal/lodging-review-modal.component';
 
 @NgModule({
-  declarations: [LodgingComponent, LodgingDetailComponent, LodgingSearchFormComponent],
+  declarations: [LodgingComponent, LodgingDetailComponent, LodgingSearchFormComponent, LodgingReviewModalComponent],
   imports: [
     CommonModule,
     LodgingRoutingModule,

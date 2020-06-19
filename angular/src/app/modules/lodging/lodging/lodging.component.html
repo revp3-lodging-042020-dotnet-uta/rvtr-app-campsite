@@ -234,3 +234,9 @@
   <div class="column is-one-fifth is-offset-8"><a *ngIf="true" (click)="nextPage()">Next Page&gt;</a></div>
 </div>
 </section>
+
+<!--This button is what you would put whereever you want them to open the Modal-->
+<button (click)="reviewModal.openModal($event)">Open Review Modal</button>
+
+<!--This just needs to be at the bottom or whereever, the Modal itself overlays the page-->
+<uic-lodging-review-modal #reviewModal>Adding a review content goes here!</uic-lodging-review-modal>

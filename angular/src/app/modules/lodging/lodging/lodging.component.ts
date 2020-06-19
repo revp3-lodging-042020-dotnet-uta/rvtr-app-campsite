@@ -58,4 +58,3 @@ export class LodgingComponent implements OnInit {
     this.loadLodgings();
   }
 }
-
