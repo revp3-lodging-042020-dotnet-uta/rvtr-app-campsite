@@ -22,4 +22,15 @@ describe('LodgingReviewModalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should open and close modal', () => {
+    component.openModal(null);
+    expect(component.lodgingReviewModal.nativeElement.classList).toContain('is-active');
+
+    component.closeModal(null);
+    expect(component.lodgingReviewModal.nativeElement.classList).not.toContain('is-active');
+
+    component.openModal(new MouseEvent('click'));
+    component.closeModal(new MouseEvent('click'));
+  });
 });
