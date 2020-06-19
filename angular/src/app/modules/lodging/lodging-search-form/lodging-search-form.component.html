@@ -1,50 +1,73 @@
-<!-- search form -->
-<form>
-  <!--location search container-->
-  <div>
-    <label for="location-search">Search</label>
-    <input type="text" placeholder="Location" name="location-search" id="location-search">
-  </div>
+<form [formGroup]="searchForm" action="" (ngSubmit)="onSubmit()">
+  <div class="tile is-parent">
 
-  <!--radius & rating container-->
-  <div>
-
-    <div>
-      <label for="search-radius">Radius</label>
-      <select>
-        <option>5 miles</option>
-        <option>10 miles</option>
-        <option>15 miles</option>
-        <option>25 miles</option>
-        <option>50 miles</option>
-      </select>
+    <div class="tile is-child is-3">
+      <div class="field">
+        <label for="city" class="label">City</label>
+        <div class="control">
+          <input formControlName="city" class="input" id="city" name="city" placeholder="City" type="text">
+        </div>
+      </div>
     </div>
 
-    <div>
-      <label for="rating"></label>
-      <div>
-        <div>X</div>
-        <div>X</div>
-        <div>X</div>
-        <div>X</div>
-        <div>X</div>
+    <div class="tile is-child is-1">
+      <div class="field">
+        <label for="location" class="label">Beds</label>
+        <div class="control">
+          <input formControlName="beds" class="input" id="location" name="location" placeholder="Beds" type="number">
+        </div>
+      </div>
+    </div>
+
+    <div class="tile is-child is-1">
+      <div class="field">
+        <label for="location" class="label">Baths</label>
+        <div class="control">
+          <input formControlName="baths" class="input" id="location" name="location" placeholder="Baths" type="number">
+        </div>
+      </div>
+    </div>
+
+    <div class="tile is-child is-1">
+      <div class="field">
+        <label for="location" class="label">Rating</label>
+        <div class="control">
+          <input formControlName="rating" class="input" id="location" name="location" placeholder="Rating" type="number">
+        </div>
+      </div>
+    </div>
+
+    <div class="tile is-child is-2 width-min-content">
+      <div class="field">
+        <label for="location" class="label">Sort By</label>
+        <div class="select">
+          <select formControlName="sortBy">
+            <option *ngFor="let field of sortByFields" value="{{field.value}}">{{field.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile is-child is-2 width-min-content">
+      <div class="field">
+        <label for="location" class="label">Order By</label>
+        <div class="select">
+          <select formControlName="orderBy">
+            <option *ngFor="let field of sortOrderFields" value="{{field.value}}">{{field.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile is-child is-1">
+      <div class="field">
+        <label for="location" class="label">&nbsp;</label>
+        <div class="control">
+          <button class="button is-primary" type="submit">Search</button>
+        </div>
       </div>
     </div>
 
   </div>
 
-  <!--beds / baths / price container-->
-  <div>
-
-    <div>
-      <label for="bed-count">Beds</label>
-      <input name="bed-count" id="bed-count" placeholder="# Beds" type="number">
-    </div>
-
-    <div>
-      <label for="bath-count">Baths</label>
-      <input name="bath-count" id="bath-count" placeholder="# Baths" type="number">
-    </div>
-
-  </div>
 </form>

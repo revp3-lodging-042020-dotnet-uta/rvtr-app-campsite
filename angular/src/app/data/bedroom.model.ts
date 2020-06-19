@@ -1,5 +1,6 @@
 import { Amenity } from './amenity.model';
 import { Image } from './image.model';
+import { BedType } from '../modules/lodging/@types/bed-type';
 
 /**
  * Represents the _Bedroom_ model
@@ -7,7 +8,7 @@ import { Image } from './image.model';
  * ```yaml
  * id: string;
  * bedCount: number;
- * bedType: string;
+ * bedType: BedType;
  * images: Image[];
  * amenities: Amenity[];
  * ```
@@ -15,7 +16,7 @@ import { Image } from './image.model';
 export interface Bedroom {
   id: string;
   bedCount: number;
-  bedType: string;
+  bedType: BedType;
   images: Image[];
   amenities: Amenity[];
 }
