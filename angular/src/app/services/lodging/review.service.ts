@@ -55,13 +55,4 @@ export class ReviewService {
   post(review: Review): Observable<Review> {
     return this.apiUrl$.pipe(concatMap((url) => this.http.post<Review>(url, review)));
   }
-
-  /**
-   * Represents the _Review Service_ `put` method
-   *
-   * @param review Review
-   */
-  put(review: Review): Observable<Lodging> {
-    return this.apiUrl$.pipe(concatMap((url) => this.http.put<Lodging>(url, review)));
-  }
 }
