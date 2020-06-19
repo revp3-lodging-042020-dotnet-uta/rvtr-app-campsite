@@ -1,0 +1,52 @@
+<!-- <button (click)="openModal($event)">Open Review Modal</button> -->
+
+<div id="lodging-review-modal-form" class="modal" #lodgingReviewModal>
+    <div class="modal-background" (click)="closeModal($event)"></div>
+    <div class="modal-card">
+      
+      <header class="modal-card-head">
+        <p class="modal-card-title">Review Modal</p>
+        <button class="delete" aria-label="close" (click)="closeModal($event)"></button>
+      </header>
+
+      <section class="modal-card-body">
+
+        <button *ngIf="!addingReview" (click)="addingReview=true">Add a Review</button>
+        <div *ngIf="addingReview">
+            <ng-content></ng-content>
+
+            <!-- <button (click)="addingReview=false">Cancel</button> -->
+        </div>
+        <button class="button is-danger" *ngIf="addingReview" (click)="addingReview=false">Cancel</button>
+
+        <br><br>
+        <div>
+            <h1>Will's review stuff would go here:</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+            <h1>elkajsdljfl</h1>
+
+        </div>
+      </section>
+  
+      <footer class="modal-card-foot">
+        <button class="button is-danger" (click)="closeModal($event)">Close Review Modal</button>
+      </footer>
+    </div>
+  </div>
