@@ -7,7 +7,7 @@ import { LodgingReviewComponent } from './lodging-review/lodging-review.componen
 
 const routes: Routes = [{ component: LodgingComponent, path: '' },
 { component: LodgingDisplayReviewComponent, path: 'review1' },
-{ component: LodgingReviewListComponent, path: 'review5,' },
+{ component: LodgingReviewListComponent, path: 'review2' },
 { component: LodgingReviewComponent, path: 'review3' }
 
 ];

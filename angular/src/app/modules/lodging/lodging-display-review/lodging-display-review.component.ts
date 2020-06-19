@@ -30,7 +30,6 @@ export class LodgingDisplayReviewComponent implements OnInit {
   ngOnInit(): void {
 
     this.LoadMore();
-    //this.LoadLess();
   }
 
 
