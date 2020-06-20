@@ -10,28 +10,19 @@ import { Account } from 'src/app/data/account.model';
 })
 export class LodgingReviewComponent implements OnInit {
 
-  accountInfo: Account[] = [];
+  accountInfo: Account;
   @Input() review: Review;
 
-
   constructor(private acctService: AccountService) { }
+
   ngOnInit(): void {
   }
 
-  //use service to GET Accounts
-  loadAccount(): void {
-    this.acctService.get().subscribe(response => {
-
-      this.accountInfo = response;
-
+  loadAccountInfo(): void {
+    this.acctService.get(this.review.accountId).subscribe(response => {
+      if (response.length > 0) {
+        this.accountInfo = response[0];
+      }
     });
   }
-
-
-
-
-
-
-
-
 }

@@ -4,8 +4,7 @@ import { LodgingComponent } from './lodging/lodging.component';
 
 import { LodgingSearchFormComponent } from './lodging-search-form/lodging-search-form.component';
 
-const routes: Routes = [{ component: LodgingComponent, path: '' },
-{ component: LodgingSearchFormComponent, path: 'search' }];
+const routes: Routes = [{ component: LodgingComponent, path: '' }];
 
 
 @NgModule({
