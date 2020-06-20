@@ -1,5 +1,5 @@
 <section class="hero is-fullheight-with-navbar">
-  <div class="hero-head" >
+  <div class="hero-head">
 
     <div class="container">
       <uic-lodging-search-form (submitted)="onSearchSubmit($event)"></uic-lodging-search-form>
@@ -113,15 +113,15 @@
         </div>
         <div class="tile">
           <div class="tile is-parent">
-            <div class="tile box is-child" *ngFor ="let rental of lodge.rentals" >
+            <div class="tile box is-child" *ngFor="let rental of lodge.rentals">
               <h2 class="title is-4">Rooms</h2>
-              <div class="level" *ngFor ="let room of rental.rentalUnit.bedrooms" >
+              <div class="level" *ngFor="let room of rental.rentalUnit.bedrooms">
                 <div class="level-item">
                   <figure class="image is-64x64">
                     <img alt="placeholder image" class="is-rounded" src="{{room.images[0].image}}">
                   </figure>
                 </div>
-                <div class="level-item has-text-centered" >
+                <div class="level-item has-text-centered">
                   <div>
                     <p class="heading">Beds</p>
                     <p class="title is-6">{{room.bedCount}} {{room.bedType.bedType}}</p>
@@ -159,9 +159,9 @@
             </div>
           </div>
         </div>
-</div>
-</div>
-</div>
+      </div>
+    </div>
+  </div>
 <br><br>
 <div class="columns is-mobile">
   <div class="column is-one-fifth"><a *ngIf="this.currentPageIndex > 0" (click)="previousPage()">&lt;Previous Page</a></div>
@@ -169,4 +169,4 @@
 </div>
 </section>
 
-<uic-lodging-review-modal #reviewModal>Adding a review content goes here!</uic-lodging-review-modal>
+<uic-lodging-review-modal #reviewModal></uic-lodging-review-modal>
