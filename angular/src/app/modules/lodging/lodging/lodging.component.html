@@ -151,7 +151,7 @@
           </div>
 
           <div class="tile is-parent">
-            <div class="tile box is-child">
+            <div (click)="reviewModal.openModal($event, lodge.id)" class="tile box is-child">
               <h2 class="title is-4">reviews</h2>
               <uic-lodging-review [review]="lodge.reviews[0]"></uic-lodging-review>
               <hr>
@@ -162,8 +162,6 @@
 </div>
 </div>
 </div>
-<!--<app-lodging-search-form></app-lodging-search-form>-->
-<!--previous page / next page buttons-->
 <br><br>
 <div class="columns is-mobile">
   <div class="column is-one-fifth"><a *ngIf="this.currentPageIndex > 0" (click)="previousPage()">&lt;Previous Page</a></div>
@@ -171,8 +169,4 @@
 </div>
 </section>
 
-<!--This button is what you would put whereever you want them to open the Modal-->
-<button (click)="reviewModal.openModal($event)">Open Review Modal</button>
-
-<!--This just needs to be at the bottom or whereever, the Modal itself overlays the page-->
 <uic-lodging-review-modal #reviewModal>Adding a review content goes here!</uic-lodging-review-modal>

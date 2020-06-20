@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Review } from 'src/app/data/review.model';
 import { ReviewService } from 'src/app/services/lodging/review.service';
 import { HttpParams } from '@angular/common/http';
@@ -15,10 +15,13 @@ export class LodgingReviewListComponent implements OnInit {
   private limit = 3;
   private offset = 0;
   public allReviewsLoaded = false;
+  public lodgeId = 0;
 
   constructor(private reviewService: ReviewService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  loadReviews(): void {
     this.loadMore();
   }
 
@@ -26,6 +29,7 @@ export class LodgingReviewListComponent implements OnInit {
     let params = new HttpParams();
     params = params.set(ReviewQueryParams.Limit, this.limit.toString());
     params = params.set(ReviewQueryParams.Offset, this.offset.toString());
+    params = params.set(ReviewQueryParams.LodgingId, this.lodgeId.toString());
 
     this.reviewService.get(undefined, params).subscribe(response => {
 
@@ -36,11 +40,18 @@ export class LodgingReviewListComponent implements OnInit {
       if (this.offset > this.reviews.length) {
         this.allReviewsLoaded = true;
       }
-
     });
+  }
 
+  public reset(): void {
+    this.reviews = [];
+    this.offset = 0;
+    this.allReviewsLoaded = false;
+    this.lodgeId = 0;
+  }
 
-
+  public setLodgeId(id: number): void {
+    this.lodgeId = id;
   }
 
 }
