@@ -84,17 +84,9 @@ describe('LodgingComponent', () => {
     expect(component.searchParams.get('test') === 'test');
   });
 
-  it('should set search limit', () => {
-    expect(component.searchParams === new HttpParams());
-
-    component.setSearchLimit();
-
-    expect(component.searchParams.get(LodgingQueryParams.Limit) === component.limit.toString());
-  });
-
   it('should load lodgings', () => {
     fixture.detectChanges();
-    component.loadLodgings();
+    component.ngOnInit();
     expect(component.lodgings.length).toEqual(1);
   });
 
