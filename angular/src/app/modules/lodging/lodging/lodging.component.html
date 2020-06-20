@@ -153,64 +153,9 @@
           <div class="tile is-parent">
             <div class="tile box is-child">
               <h2 class="title is-4">reviews</h2>
-
-              <div class="level">
-                <div class="level-item">
-                  <figure class="image is-64x64">
-                    <img alt="placeholder image" class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                  </figure>
-                </div>
-                <div class="level-item has-text-centered">
-                  <div>
-                    <p class="heading">reviewer</p>
-                    <p class="title is-6">Lorem Ipsum</p>
-                  </div>
-                </div>
-
-                <div class="level-item has-text-centered">
-                  <div>
-                    <p class="heading">rating</p>
-                    <p class="title is-6">8.0</p>
-                  </div>
-                </div>
-
-                <div class="level-item has-text-centered">
-                  <div>
-                    <p class="heading">date</p>
-                    <p class="title is-6">2020-12-29</p>
-                  </div>
-                </div>
-              </div>
-
+              <uic-lodging-review [review]="lodge.reviews[0]"></uic-lodging-review>
               <hr>
-              <div class="level">
-                <div class="level-item">
-                  <figure class="image is-64x64">
-                    <img alt="placeholder image" class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                  </figure>
-                </div>
-
-                <div class="level-item has-text-centered">
-                  <div>
-                    <p class="heading">reviewer</p>
-                    <p class="title is-6">Lorem Ipsum</p>
-                  </div>
-                </div>
-
-                <div class="level-item has-text-centered">
-                  <div>
-                    <p class="heading">rating</p>
-                    <p class="title is-6">8.5</p>
-                  </div>
-                </div>
-
-                <div class="level-item has-text-centered">
-                  <div>
-                    <p class="heading">date</p>
-                    <p class="title is-6">2020-12-29</p>
-                  </div>
-                </div>
-              </div>
+              <uic-lodging-review [review]="lodge.reviews[1]"></uic-lodging-review>
             </div>
           </div>
         </div>
