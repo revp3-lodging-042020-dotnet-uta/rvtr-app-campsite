@@ -5,7 +5,7 @@ import { LodgingSortKey } from '../@types/lodging-sort-key';
 import { SortOrder } from '../@types/sort-order';
 
 describe('LodgingSearchFormComponent', () => {
-  
+
   let component: LodgingSearchFormComponent;
   let fixture: ComponentFixture<LodgingSearchFormComponent>;
 

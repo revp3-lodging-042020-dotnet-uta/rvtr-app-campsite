@@ -15,12 +15,14 @@ export class LodgingComponent implements OnInit {
 
   public lodgings: Lodging[];
   // Amount of lodgings to load at one time.
+
   private limit = 3;
   // Current offset for lodge pagination.
   private offset = 0;
   nxtPage=true;
   prevPage;
   private searchParams: HttpParams = new HttpParams();
+
 
   constructor(private lodgingService: LodgingService) {}
 
@@ -83,5 +85,37 @@ export class LodgingComponent implements OnInit {
     this.searchParams = queryParams;
     this.loadLodgings();
   }
-}
 
+  getIconName(amenity: string): string {
+    if (amenity == 'Pool') {
+      return 'swimmer';
+    }
+    else {
+      return amenity.toLowerCase();
+    }
+  }
+
+  countAmenities(amenities: object): object {
+    if (Object.keys(amenities).length >= 3) {
+      return [];
+    }
+    else if (Object.keys(amenities).length == 2) {
+      return [
+        {blank: null}
+      ];
+    }
+    else if (Object.keys(amenities).length == 1) {
+      return [
+        {blank: null},
+        {blank: null}
+      ];
+    }
+    else {
+      return [
+        {blank: null},
+        {blank: null},
+        {blank: null}
+      ];
+    }
+  }
+}

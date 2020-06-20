@@ -53,13 +53,4 @@ export class LodgingService {
   post(lodging: Lodging): Observable<Lodging> {
     return this.apiUrl$.pipe(concatMap((url) => this.http.post<Lodging>(url, lodging)));
   }
-
-  /**
-   * Represents the _Lodging Service_ `put` method
-   *
-   * @param lodging Lodging
-   */
-  put(lodging: Lodging): Observable<Lodging> {
-    return this.apiUrl$.pipe(concatMap((url) => this.http.put<Lodging>(url, lodging)));
-  }
 }
