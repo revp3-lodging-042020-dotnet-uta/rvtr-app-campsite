@@ -1,5 +1,5 @@
 <section class="hero is-fullheight-with-navbar">
-  <div class="hero-head" >
+  <div class="hero-head">
 
     <div class="container">
       <uic-lodging-search-form (submitted)="onSearchSubmit($event)"></uic-lodging-search-form>
@@ -113,15 +113,15 @@
         </div>
         <div class="tile">
           <div class="tile is-parent">
-            <div class="tile box is-child" *ngFor ="let rental of lodge.rentals" >
+            <div class="tile box is-child" *ngFor="let rental of lodge.rentals">
               <h2 class="title is-4">Rooms</h2>
-              <div class="level" *ngFor ="let room of rental.rentalUnit.bedrooms" >
+              <div class="level" *ngFor="let room of rental.rentalUnit.bedrooms">
                 <div class="level-item">
                   <figure class="image is-64x64">
                     <img alt="placeholder image" class="is-rounded" src="{{room.images[0].image}}">
                   </figure>
                 </div>
-                <div class="level-item has-text-centered" >
+                <div class="level-item has-text-centered">
                   <div>
                     <p class="heading">Beds</p>
                     <p class="title is-6">{{room.bedCount}} {{room.bedType.bedType}}</p>
@@ -210,24 +210,24 @@
                     <p class="title is-6">2020-12-29</p>
                   </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>
-</div>
-</div>
-</div>
-<!--<app-lodging-search-form></app-lodging-search-form>-->
-<!--previous page / next page buttons-->
-<br><br>
-<div class="columns is-mobile">
-  <div class="column is-one-fifth"><a *ngIf="true" (click)="previousPage()">&lt;Previous Page</a></div>
-  <div class="column is-one-fifth is-offset-8"><a *ngIf="true" (click)="nextPage()">Next Page&gt;</a></div>
-</div>
+      </div>
+    </div>
+  </div>
+  <!--<app-lodging-search-form></app-lodging-search-form>-->
+  <!--previous page / next page buttons-->
+  <br><br>
+  <div class="columns is-mobile">
+    <div class="column is-one-fifth"><a *ngIf="true" (click)="previousPage()">&lt;Previous Page</a></div>
+    <div class="column is-one-fifth is-offset-8"><a *ngIf="true" (click)="nextPage()">Next Page&gt;</a></div>
+  </div>
+  </div>
 </section>
+
+<!--This just needs to be at the bottom or whereever, the Modal itself overlays the page-->
+<uic-lodging-review-modal #reviewModal><uic-add-review-lodging></uic-add-review-lodging></uic-lodging-review-modal>
 
 <!--This button is what you would put whereever you want them to open the Modal-->
 <button (click)="reviewModal.openModal($event)">Open Review Modal</button>
-
-<!--This just needs to be at the bottom or whereever, the Modal itself overlays the page-->
-<uic-lodging-review-modal #reviewModal>Adding a review content goes here!</uic-lodging-review-modal>
