@@ -100,14 +100,8 @@
                     <div>
                       <p class="heading">Amenity</p>
                       <p>
-                        <span class="icon">
-                          <i aria-hidden="true" class="fas fa-coffee"></i>
-                        </span>
-                        <span class="icon">
-                          <i aria-hidden="true" class="fas fa-swimmer"></i>
-                        </span>
-                        <span class="icon">
-                          <i aria-hidden="true" class="fas fa-wifi"></i>
+                        <span *ngFor="let amenity of lodge.amenities" class="icon">
+                          <i aria-hidden="true" class="fas fa-{{getIconName(amenity.amenity)}}"></i>
                         </span>
                       </p>
                     </div>
@@ -143,14 +137,11 @@
                   <div>
                     <p class="heading">Amenity</p>
                     <p>
-                      <span class="icon">
-                        <i aria-hidden="true" class="fas fa-coffee"></i>
+                      <span *ngFor="let amenity of room.amenities; let i = index" class="icon">
+                        <i *ngIf="3 > i" aria-hidden="true" class="fas fa-{{getIconName(amenity.amenity)}}"></i>
                       </span>
-                      <span class="icon">
-                        <i aria-hidden="true" class="fas fa-swimmer"></i>
-                      </span>
-                      <span class="icon">
-                        <i aria-hidden="true" class="fas fa-wifi"></i>
+                      <span *ngFor="let blank of countAmenities(room.amenities)" class="icon">
+                        <i></i>
                       </span>
                     </p>
                   </div>
