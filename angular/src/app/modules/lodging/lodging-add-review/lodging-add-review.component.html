@@ -1,16 +1,16 @@
-<div>
+<form  [formGroup]="newReview" (ngSubmit)="addReview(newReview.form);">
   <div>
-    <div>Customer Name</div>
-    <div>Datepicker</div>
-    <div>Rating XXXXX</div>
+    <p>{{name}}</p>
+    <div>{{date | date}}</div>
   </div>
-  <form>
-    <div>
-      <textarea>Customer comment</textarea>
+  <div>
+    <textarea rows="5" cols="80" formControlName="comment"></textarea>
     </div>
+  <div>
+    <input type="number" formControlName="rating" >
+  </div>
     <div>
-      <input type="button" value="Cancel">
-      <input type="button" value="Submit">
+      <input type="button" value="Submit" [disabled]="!newReview.valid">
     </div>
   </form>
-</div>
+
