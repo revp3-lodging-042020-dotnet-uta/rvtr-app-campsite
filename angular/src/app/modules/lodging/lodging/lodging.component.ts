@@ -16,11 +16,11 @@ export class LodgingComponent implements OnInit {
   public lodgings: Lodging[];
 
   // Amount of lodgings to load at one time.
-  private limit = 5;
+  public limit = 5;
   // Current offset for lodge pagination.
-  private offset = 0;
+  public offset = 0;
 
-  private searchParams: HttpParams = new HttpParams();
+  public searchParams: HttpParams = new HttpParams();
 
   constructor(private lodgingService: LodgingService) { }
 
