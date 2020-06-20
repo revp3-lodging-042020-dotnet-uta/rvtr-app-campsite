@@ -57,4 +57,37 @@ export class LodgingComponent implements OnInit {
     this.searchParams = queryParams;
     this.loadLodgings();
   }
+
+  getIconName(amenity: string): string {
+    if (amenity == 'Pool') {
+      return 'swimmer';
+    }
+    else {
+      return amenity.toLowerCase();
+    }
+  }
+
+  countAmenities(amenities: object): object {
+    if (Object.keys(amenities).length >= 3) {
+      return [];
+    }
+    else if (Object.keys(amenities).length == 2) {
+      return [
+        {blank: null}
+      ];
+    }
+    else if (Object.keys(amenities).length == 1) {
+      return [
+        {blank: null},
+        {blank: null}
+      ];
+    }
+    else {
+      return [
+        {blank: null},
+        {blank: null},
+        {blank: null}
+      ];
+    }
+  }
 }
