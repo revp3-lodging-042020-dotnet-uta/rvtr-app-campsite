@@ -5,7 +5,7 @@ import { HttpParams } from '@angular/common/http';
 import { LodgingQueryParams } from '../@types/lodging-query-params';
 import { FormGroup } from '@angular/forms';
 import { LodgingSearchFormField } from '../lodging-search-form/lodging-search-form-field';
-import Limit = LodgingQueryParams.Limit;
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'uic-lodging',
@@ -13,77 +13,132 @@ import Limit = LodgingQueryParams.Limit;
 })
 export class LodgingComponent implements OnInit {
 
-  public lodgings: Lodging[];
-  // Amount of lodgings to load at one time.
-  public limit = 3;
-  // Current offset for lodge pagination.
-  public offset = 0;
+  // The number of lodges that should be displayed at one time.
+  public pageSize = 2;
 
-  nxtPage = true;
-  prevPage;
+  // The last index that can be displayed.
+  // This is used to hide the "next page" button.
+  public lastPageIndex = 0;
 
+  // All the lodgings that have been loaded.
+  public lodgingCache: Lodging[] = [];
+
+  // Lodgings to be displayed on the page.
+  public lodgings: Lodging[] = [];
+  // Used for indexing into the lodgingCache for page display.
+  public currentPageIndex = 0;
+
+  // User-defined search params.
   public searchParams: HttpParams = new HttpParams();
 
-  constructor(private lodgingService: LodgingService) {}
+  // Whether all lodges from the server have been loaded.
+  public allLodgesLoaded = false;
 
-  nextPage() {
-    if (this.lodgings.length > 0) {
-      this.offset = this.offset + this.limit;
-      this.loadLodgings();
-    } else
-    {
-      this.nxtPage = false;
-    }
-    console.log(this.lodgings.length);
-  }
-
-  previousPage() {
-    if (this.offset !== 0) {
-      this.nxtPage = true;
-      if (this.offset >= this.offset - this.limit) {
-        this.offset = this.offset - this.limit;
-      }
-      this.loadLodgings();
-    }
-  }
-
-  setOffset() {
-    this.searchParams = this.searchParams.set(LodgingQueryParams.Offset, this.offset.toString());
-  }
+  constructor(private lodgingService: LodgingService) { }
 
   ngOnInit(): void {
-    this.loadLodgings();
-  }
-
-  loadLodgings() {
-    this.setSearchLimit();
-    this.setOffset();
-    this.searchParams = this.searchParams.set(LodgingQueryParams.IncludeImages, true.toString());
-    this.lodgingService.get(undefined, this.searchParams).subscribe(response => {
-      if (response.length === 0) {
-        this.nxtPage = false;
-        this.offset = this.offset - this.limit;
-        return;
-      }
-      if (this.offset !== 0) {
-        this.prevPage = true;
-      } else this.prevPage = false;
-      this.lodgings = response;
+    this.prefetchLodgings().subscribe(response => {
+      this.processLodgeResponse(response);
+      this.renderLodgesFromCache(0, this.pageSize);
     });
   }
+
   /**
-   * Sets the limit for number of results that should be returned by the server.
+   * Go forward a page.
    */
-  setSearchLimit() {
-    this.searchParams = this.searchParams.set(Limit, this.limit.toString());
+  nextPage() {
+    this.currentPageIndex += this.pageSize;
+
+    const render = () => {
+      // Pick the appropriate lodge entries from the cache for rendering.
+      this.renderLodgesFromCache(this.currentPageIndex, this.currentPageIndex + this.pageSize);
+    };
+
+    // We prefetch one page ahead in order to increase the responsiveness
+    // of the application by multiplying the page size by 2.
+    if (this.lodgingCache.length < (this.currentPageIndex + (this.pageSize * 2))) {
+      if (!this.allLodgesLoaded) {
+        this.prefetchLodgings().subscribe(response => {
+          this.processLodgeResponse(response);
+          render();
+        });
+      }
+    }
+    render();
   }
+
+  /**
+   * Go back a page.
+   */
+  previousPage() {
+    this.currentPageIndex -= this.pageSize;
+    this.renderLodgesFromCache(this.currentPageIndex, this.currentPageIndex + this.pageSize);
+  }
+
+  /**
+   * Copies a slice from the lodge cache into the lodge variable that is used
+   * for rendering.
+   * @param start index to start the slice
+   * @param end index to end the slice
+   */
+  renderLodgesFromCache(start: number, end: number): void {
+    this.lodgings = this.lodgingCache.slice(start, end);
+  }
+
+  /**
+   * Updates the lodge cache, and sets appropriate indexing and pagination
+   * variables.
+   * @param response Lodgings returned from prefetchLodgings
+   */
+  processLodgeResponse(response: Lodging[]) {
+    // Add the new lodgings to the cache.
+    this.lodgingCache = this.lodgingCache.concat(response);
+    // Mark the last page available based on the response.
+    this.lastPageIndex = this.lodgingCache.length - this.pageSize;
+    // When the response is empty or less than the page size, this
+    // means we have run out of lodges, so set a flag to indicate this.
+    if (response.length < this.pageSize) { this.allLodgesLoaded = true; }
+  }
+
+  /**
+   * Returns an observable that will load the number of lodges required
+   * to fill two pages.
+   */
+  prefetchLodgings(): Observable<Lodging[]> {
+    // We load double the page size for faster user-interaction.
+    this.searchParams = this.searchParams.set(LodgingQueryParams.Limit, (this.pageSize * 2).toString());
+
+    // The offset for loading results will always be the cache size.
+    this.searchParams = this.searchParams.set(LodgingQueryParams.Offset, this.lodgingCache.length.toString());
+
+    // Include image data in the results.
+    this.searchParams = this.searchParams.set(LodgingQueryParams.IncludeImages, true.toString());
+
+    return this.lodgingService.get(undefined, this.searchParams);
+  }
+
+  /**
+   * Resets the state of the page. Used when processing search requests.
+   */
+  resetPage() {
+    this.lastPageIndex = 0;
+    this.lodgingCache = [];
+    this.lodgings = [];
+    this.currentPageIndex = 0;
+    this.allLodgesLoaded = false;
+  }
+
   /**
    * Fired when the search component is submitted.
    * @param queryParams Parameters generated by the search component.
    */
   onSearchSubmit(queryParams: HttpParams) {
+    this.resetPage();
     this.searchParams = queryParams;
-    this.loadLodgings();
+    this.prefetchLodgings().subscribe(response => {
+      this.processLodgeResponse(response);
+      this.renderLodgesFromCache(0, this.pageSize);
+    });
   }
 
   getIconName(amenity: string): string {
@@ -101,20 +156,20 @@ export class LodgingComponent implements OnInit {
     }
     else if (Object.keys(amenities).length == 2) {
       return [
-        {blank: null}
+        { blank: null }
       ];
     }
     else if (Object.keys(amenities).length == 1) {
       return [
-        {blank: null},
-        {blank: null}
+        { blank: null },
+        { blank: null }
       ];
     }
     else {
       return [
-        {blank: null},
-        {blank: null},
-        {blank: null}
+        { blank: null },
+        { blank: null },
+        { blank: null }
       ];
     }
   }
