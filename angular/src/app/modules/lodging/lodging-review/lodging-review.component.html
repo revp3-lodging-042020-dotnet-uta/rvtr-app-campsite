@@ -20,16 +20,16 @@
     <div class="level-item has-text-centered">
         <div>
             <p class="heading">Rating</p>
-            <p class="title is-6">{{review.rating}}</p>
+            <p *ngIf="review" class="title is-6">{{review.rating}}</p>
         </div>
     </div>
 
     <div class="level-item has-text-centered">
         <div>
             <p class="heading">Date</p>
-            <p class="title is-6">{{review.dateCreated | date: 'shortDate'}}</p>
+            <p *ngIf="review" class="title is-6">{{review.dateCreated | date: 'shortDate'}}</p>
         </div>
     </div>
 </div>
-<div *ngIf="displayComment">{{review.comment}}</div>
+<div *ngIf="displayComment && review">{{review.comment}}</div>
 <hr>
