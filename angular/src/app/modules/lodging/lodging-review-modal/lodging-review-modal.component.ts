@@ -49,6 +49,9 @@ export class LodgingReviewModalComponent implements OnInit {
     this.lodgingReviewModal.nativeElement.classList.remove('is-active');
   }
 
+  /**
+   * This is fired when a user submits a review.
+   */
   public reviewSubmitted(): void {
     this.closeModal();
   }

@@ -11,6 +11,9 @@ import { Account } from '../../../data/account.model';
 })
 export class LodgingAddReviewComponent implements OnInit {
 
+  /**
+   * Event fired when the review has been submitted by the user.
+   */
   @Output() submitted = new EventEmitter<boolean>();
 
   reviewForm = new FormGroup({
@@ -35,6 +38,9 @@ export class LodgingAddReviewComponent implements OnInit {
   constructor(private readonly reviewService: ReviewService) { }
   ngOnInit(): void { }
 
+  /**
+   * Determines if the review can be submitted based on form validations.
+   */
   canSubmit() {
     return this.reviewForm.controls.comment.valid &&
            this.reviewForm.controls.rating.valid &&
@@ -65,6 +71,9 @@ export class LodgingAddReviewComponent implements OnInit {
     });
   }
 
+  /**
+   * Reset the form.
+   */
   public reset() {
     this.account = null;
     this.lodge = null;
@@ -76,6 +85,9 @@ export class LodgingAddReviewComponent implements OnInit {
     });
   }
 
+  /**
+   * Set the user account who is making the review.
+   */
   public setAccount(account: Account): void {
     if (!account) {
       const placeholderAccount: Account = {
@@ -91,6 +103,9 @@ export class LodgingAddReviewComponent implements OnInit {
     }
   }
 
+  /**
+   * Set the lodge that this review is for.
+   */
   public setLodge(lodge: Lodging): void {
     this.lodge = lodge;
   }
