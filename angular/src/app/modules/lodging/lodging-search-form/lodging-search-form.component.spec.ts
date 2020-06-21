@@ -34,6 +34,7 @@ describe('LodgingSearchFormComponent', () => {
   it('should generate query params', () => {
     component.searchForm = new FormGroup({
       city: new FormControl('city'),
+      name: new FormControl('name'),
       beds: new FormControl('1'),
       baths: new FormControl('1'),
       rating: new FormControl('1'),

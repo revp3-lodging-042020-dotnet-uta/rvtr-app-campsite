@@ -32,6 +32,7 @@ export class LodgingSearchFormComponent implements OnInit {
 
   searchForm = new FormGroup({
     city: new FormControl(''),
+    name: new FormControl(''),
     beds: new FormControl(''),
     baths: new FormControl(''),
     rating: new FormControl(''),
@@ -54,6 +55,11 @@ export class LodgingSearchFormComponent implements OnInit {
     const city = this.searchForm.get(LodgingSearchFormField.City).value;
     if (city) {
       params = params.set(LodgingQueryParams.City, city.toString());
+    }
+
+    const name = this.searchForm.get(LodgingSearchFormField.Name).value;
+    if (name) {
+      params = params.set(LodgingQueryParams.Name, name.toString());
     }
 
     const beds = this.searchForm.get(LodgingSearchFormField.Beds).value;
