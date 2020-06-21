@@ -113,6 +113,17 @@ describe('LodgingAddReviewComponent', () => {
     expect(component.account.id).toEqual('1');
   });
 
+  it('should set default account', () => {
+    fixture.detectChanges();
+    component.ngOnInit();
+
+    expect(component.account).toEqual(undefined);
+
+    component.setAccount(null);
+    expect(component.account.id).toEqual('1');
+    expect(component.account.name).toEqual('Anonymous');
+  });
+
   it('should set lodging', () => {
     fixture.detectChanges();
     component.ngOnInit();

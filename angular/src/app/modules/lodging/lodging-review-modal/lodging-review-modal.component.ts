@@ -1,7 +1,7 @@
-import { Component, OnInit, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { LodgingReviewListComponent } from '../lodging-review-list/lodging-review-list.component';
 import { LodgingAddReviewComponent } from '../lodging-add-review/lodging-add-review.component';
-import { Lodging } from 'src/app/data/lodging.model';
+import { Lodging } from '../../../data/lodging.model';
 import { Account } from '../../../data/account.model';
 
 @Component({

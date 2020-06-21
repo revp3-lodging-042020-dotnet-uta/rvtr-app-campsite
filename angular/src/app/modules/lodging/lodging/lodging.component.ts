@@ -1,12 +1,10 @@
 import { LodgingService } from './../../../services/lodging/lodging.service';
 import { Component, OnInit } from '@angular/core';
-import { Lodging } from 'src/app/data/lodging.model';
+import { Lodging } from '../../../data/lodging.model';
 import { HttpParams } from '@angular/common/http';
 import { LodgingQueryParams } from '../@types/lodging-query-params';
-import { FormGroup } from '@angular/forms';
-import { LodgingSearchFormField } from '../lodging-search-form/lodging-search-form-field';
 import { Observable } from 'rxjs';
-import { AccountService } from 'src/app/services/account/account.service';
+import { AccountService } from '../../../services/account/account.service';
 import { Account } from '../../../data/account.model';
 
 @Component({
@@ -41,8 +39,8 @@ export class LodgingComponent implements OnInit {
   public account: Account;
 
   constructor(
-    private lodgingService: LodgingService,
-    private accountService: AccountService
+    private readonly lodgingService: LodgingService,
+    private readonly accountService: AccountService
   ) { }
 
   ngOnInit(): void {
@@ -128,7 +126,9 @@ export class LodgingComponent implements OnInit {
     this.lastPageIndex = this.lodgingCache.length - this.pageSize;
     // When the response is empty or less than the page size, this
     // means we have run out of lodges, so set a flag to indicate this.
-    if (response.length < this.pageSize) { this.allLodgesLoaded = true; }
+    if (response.length < this.pageSize) {
+      this.allLodgesLoaded = true;
+    }
   }
 
   /**

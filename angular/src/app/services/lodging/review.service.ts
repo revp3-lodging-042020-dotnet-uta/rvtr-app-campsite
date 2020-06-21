@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { concatMap, map } from 'rxjs/operators';
 import { ConfigService } from '../config/config.service';
-import { Lodging } from '../../data/lodging.model';
-import { Review } from 'src/app/data/review.model';
+import { Review } from '../../data/review.model';
 
 @Injectable({
   providedIn: 'root',

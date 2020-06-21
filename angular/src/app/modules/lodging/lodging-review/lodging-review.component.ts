@@ -1,12 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Review } from 'src/app/data/review.model';
-import { AccountService } from 'src/app/services/account/account.service';
-import { Account } from 'src/app/data/account.model';
+import { Review } from '../../../data/review.model';
+import { AccountService } from '../../../services/account/account.service';
+import { Account } from '../../../data/account.model';
 
 @Component({
   selector: 'uic-lodging-review',
-  templateUrl: './lodging-review.component.html',
-  styleUrls: ['./lodging-review.component.scss']
+  templateUrl: './lodging-review.component.html'
 })
 export class LodgingReviewComponent implements OnInit {
 
@@ -14,13 +13,13 @@ export class LodgingReviewComponent implements OnInit {
   @Input() review: Review;
   @Input() displayComment = false;
 
-  constructor(private acctService: AccountService) { }
+  constructor(private readonly accountService: AccountService) { }
 
   ngOnInit(): void {
   }
 
   loadAccountInfo(): void {
-    this.acctService.get(this.review.accountId).subscribe(response => {
+    this.accountService.get(this.review.accountId).subscribe(response => {
       if (response.length > 0) {
         this.accountInfo = response[0];
       }

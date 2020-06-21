@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Review } from 'src/app/data/review.model';
-import { ReviewService } from 'src/app/services/lodging/review.service';
+import { Component, OnInit } from '@angular/core';
+import { Review } from '../../../data/review.model';
+import { ReviewService } from '../../../services/lodging/review.service';
 import { HttpParams } from '@angular/common/http';
 import { ReviewQueryParams } from '../@types/review-query-params';
 import { ReviewSortKey } from '../@types/review-sort-key';
@@ -19,7 +19,7 @@ export class LodgingReviewListComponent implements OnInit {
   public allReviewsLoaded = false;
   public lodgeId = 0;
 
-  constructor(private reviewService: ReviewService) { }
+  constructor(private readonly reviewService: ReviewService) { }
 
   ngOnInit(): void { }
 

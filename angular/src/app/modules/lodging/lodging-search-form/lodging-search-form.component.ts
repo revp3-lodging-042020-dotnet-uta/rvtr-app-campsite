@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Lodging } from 'src/app/data/lodging.model';
 import { LodgingSortKey } from '../@types/lodging-sort-key';
 import { SortOrder } from '../@types/sort-order';
 import { FormControl, FormGroup } from '@angular/forms';

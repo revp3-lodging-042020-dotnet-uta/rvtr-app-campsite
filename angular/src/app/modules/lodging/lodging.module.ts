@@ -2,7 +2,6 @@ import { LodgingAddReviewComponent } from './lodging-add-review/lodging-add-revi
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
 import { LodgingRoutingModule } from './lodging-routing.module';
 import { LodgingComponent } from './lodging/lodging.component';
 import { LodgingSearchFormComponent } from './lodging-search-form/lodging-search-form.component';
@@ -22,8 +21,7 @@ import { LodgingReviewModalComponent } from './lodging-review-modal/lodging-revi
   imports: [
     CommonModule,
     LodgingRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
+    ReactiveFormsModule
   ]
 })
 
