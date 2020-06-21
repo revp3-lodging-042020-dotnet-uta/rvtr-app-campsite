@@ -42,7 +42,10 @@ export class LodgingComponent implements OnInit {
     private readonly lodgingService: LodgingService,
     private readonly accountService: AccountService
   ) { }
-
+  goToTop()
+  {
+    window.scrollTo(0, 0);
+  }
   ngOnInit(): void {
     this.prefetchLodgings().subscribe(response => {
       this.processLodgeResponse(response);

@@ -133,9 +133,9 @@
       </div>
     </div>
     <div class="container uic-paginate-button-layout">
-      <button class="button uic-paginate-button" *ngIf="this.currentPageIndex > 0" (click)="previousPage()">&lt;Previous Page</button>
+      <a class="button uic-paginate-button" (click)="previousPage();goToTop()" *ngIf="this.currentPageIndex>0">Previous Page</a>
       <div *ngIf="this.currentPageIndex < this.lastPageIndex"></div>
-      <button class="button uic-paginate-button" *ngIf="this.currentPageIndex < this.lastPageIndex" (click)="nextPage()">Next Page&gt;</button>
+      <a class="button uic-paginate-button" *ngIf="this.currentPageIndex < this.lastPageIndex" (click)="nextPage();goToTop()">Next Page&gt;</a>
     </div>
   </div>
 </section>
