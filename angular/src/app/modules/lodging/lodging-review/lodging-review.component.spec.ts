@@ -1,4 +1,3 @@
-import { Review } from './../../../data/review.model';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LodgingReviewComponent } from './lodging-review.component';

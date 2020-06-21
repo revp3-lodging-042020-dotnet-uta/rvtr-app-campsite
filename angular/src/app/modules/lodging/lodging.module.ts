@@ -8,6 +8,7 @@ import { LodgingSearchFormComponent } from './lodging-search-form/lodging-search
 import { LodgingReviewListComponent } from './lodging-review-list/lodging-review-list.component';
 import { LodgingReviewComponent } from './lodging-review/lodging-review.component';
 import { LodgingReviewModalComponent } from './lodging-review-modal/lodging-review-modal.component';
+import { LodgingRoomComponent } from './lodging-room/lodging-room.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { LodgingReviewModalComponent } from './lodging-review-modal/lodging-revi
     LodgingReviewComponent,
     LodgingReviewListComponent,
     LodgingReviewModalComponent,
+    LodgingRoomComponent
   ],
   imports: [
     CommonModule,

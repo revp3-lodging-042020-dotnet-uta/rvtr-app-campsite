@@ -1,8 +1,11 @@
-<uic-lodging-review
-    *ngFor="let review of reviews"
-    [review]="review"
-    [displayComment]="true">
-</uic-lodging-review>
+<div *ngFor="let review of reviews">
+    <uic-lodging-review
+        [review]="review"
+        [displayComment]="true">
+    </uic-lodging-review>
+    <hr>
+</div>
+
 
 
 <div class="level">

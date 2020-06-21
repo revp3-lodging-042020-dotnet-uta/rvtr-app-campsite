@@ -181,27 +181,4 @@ export class LodgingComponent implements OnInit {
     }
   }
 
-  countAmenities(amenities: object): object {
-    if (Object.keys(amenities).length >= 3) {
-      return [];
-    }
-    else if (Object.keys(amenities).length === 2) {
-      return [
-        { blank: null }
-      ];
-    }
-    else if (Object.keys(amenities).length === 1) {
-      return [
-        { blank: null },
-        { blank: null }
-      ];
-    }
-    else {
-      return [
-        { blank: null },
-        { blank: null },
-        { blank: null }
-      ];
-    }
-  }
 }
