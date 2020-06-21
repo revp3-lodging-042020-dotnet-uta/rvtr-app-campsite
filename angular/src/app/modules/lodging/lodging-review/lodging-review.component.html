@@ -11,7 +11,7 @@
     <div class="level-item has-text-centered">
         <div>
             <p class="heading">Reviewer</p>
-            <p *ngIf="accountInfo === undefined" class="title is-6">{{review.accountId}}</p>
+            <p *ngIf="accountInfo === undefined" class="title is-6">Anonymous</p>
             <p *ngIf="accountInfo !== undefined" class="title is-6">{{accountInfo.name}}</p>
 
         </div>
@@ -31,3 +31,5 @@
         </div>
     </div>
 </div>
+<div *ngIf="displayComment">{{review.comment}}</div>
+<hr>

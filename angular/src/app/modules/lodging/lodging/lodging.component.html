@@ -136,14 +136,14 @@
                 <div class="level-item has-text-centered">
                   <div>
                     <p class="heading">Amenity</p>
-                    <p>
+                    <div>
                       <span *ngFor="let amenity of room.amenities; let i = index" class="icon">
                         <i *ngIf="3 > i" aria-hidden="true" class="fas fa-{{getIconName(amenity.amenity)}}"></i>
                       </span>
                       <span *ngFor="let blank of countAmenities(room.amenities)" class="icon">
                         <i></i>
                       </span>
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -151,22 +151,21 @@
           </div>
 
           <div class="tile is-parent">
-            <div (click)="reviewModal.openModal($event, lodge.id)" class="tile box is-child">
-              <h2 class="title is-4">reviews</h2>
+            <div (click)="reviewModal.openModal($event, lodge, account)" class="tile box is-child">
+              <h2 class="title is-4">Reviews</h2>
               <uic-lodging-review [review]="lodge.reviews[0]"></uic-lodging-review>
-              <hr>
               <uic-lodging-review [review]="lodge.reviews[1]"></uic-lodging-review>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="container uic-paginate-button-layout">
+      <button class="button uic-paginate-button" *ngIf="this.currentPageIndex > 0" (click)="previousPage()">&lt;Previous Page</button>
+      <div *ngIf="this.currentPageIndex < this.lastPageIndex"></div>
+      <button class="button uic-paginate-button" *ngIf="this.currentPageIndex < this.lastPageIndex" (click)="nextPage()">Next Page&gt;</button>
+    </div>
   </div>
-<br><br>
-<div class="columns is-mobile">
-  <div class="column is-one-fifth"><a *ngIf="this.currentPageIndex > 0" (click)="previousPage()">&lt;Previous Page</a></div>
-  <div class="column is-one-fifth is-offset-8"><a *ngIf="this.currentPageIndex < this.lastPageIndex" (click)="nextPage()">Next Page&gt;</a></div>
-</div>
 </section>
 
 <uic-lodging-review-modal #reviewModal></uic-lodging-review-modal>

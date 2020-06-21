@@ -5,18 +5,14 @@
     <div class="modal-card">
       
       <header class="modal-card-head">
-        <p class="modal-card-title">Review Modal</p>
+        <p class="modal-card-title">Reviews</p>
         <button class="delete" aria-label="close" (click)="closeModal($event)"></button>
       </header>
 
       <section class="modal-card-body">
 
-        <button *ngIf="!addingReview" (click)="addingReview=true">Add a Review</button>
-        <div *ngIf="addingReview">
-            <ng-content></ng-content>
+        <uic-lodging-add-review (submitted)="reviewSubmitted()"></uic-lodging-add-review>
 
-            <!-- <button (click)="addingReview=false">Cancel</button> -->
-        </div>
         <button class="button is-danger" *ngIf="addingReview" (click)="addingReview=false">Cancel</button>
 
         <br><br>
@@ -25,8 +21,8 @@
         </div>
       </section>
   
-      <footer class="modal-card-foot">
-        <button class="button is-danger" (click)="closeModal($event)">Close Review Modal</button>
+      <footer class="modal-card-foot level">
+        <button class="button is-danger level-item" (click)="closeModal($event)">Close</button>
       </footer>
     </div>
   </div>

@@ -6,10 +6,13 @@ import { LodgingQueryParams } from '../@types/lodging-query-params';
 import { FormGroup } from '@angular/forms';
 import { LodgingSearchFormField } from '../lodging-search-form/lodging-search-form-field';
 import { Observable } from 'rxjs';
+import { AccountService } from 'src/app/services/account/account.service';
+import { Account } from '../../../data/account.model';
 
 @Component({
   selector: 'uic-lodging',
   templateUrl: './lodging.component.html',
+  styleUrls: ['./lodging.component.scss']
 })
 export class LodgingComponent implements OnInit {
 
@@ -34,12 +37,40 @@ export class LodgingComponent implements OnInit {
   // Whether all lodges from the server have been loaded.
   public allLodgesLoaded = false;
 
-  constructor(private lodgingService: LodgingService) { }
+  // User account currently logged-in.
+  public account: Account;
+
+  constructor(
+    private lodgingService: LodgingService,
+    private accountService: AccountService
+  ) { }
 
   ngOnInit(): void {
     this.prefetchLodgings().subscribe(response => {
       this.processLodgeResponse(response);
       this.renderLodgesFromCache(0, this.pageSize);
+    });
+
+    this.accountService.get('1').subscribe(res => {
+      if (res.length > 0)
+      {
+        this.account = res[0];
+      } else {
+        this.account = {
+          id: '1',
+          address: {
+            id: '1',
+            city: 'Dallas',
+            country: 'US',
+            postalCode: '77777',
+            stateProvince: 'Texas',
+            street: '123 Testing st.',
+          },
+          name: 'Lucy C.',
+          payments: [],
+          profiles: [],
+        };
+      }
     });
   }
 
@@ -142,7 +173,7 @@ export class LodgingComponent implements OnInit {
   }
 
   getIconName(amenity: string): string {
-    if (amenity == 'Pool') {
+    if (amenity === 'Pool') {
       return 'swimmer';
     }
     else {
@@ -154,12 +185,12 @@ export class LodgingComponent implements OnInit {
     if (Object.keys(amenities).length >= 3) {
       return [];
     }
-    else if (Object.keys(amenities).length == 2) {
+    else if (Object.keys(amenities).length === 2) {
       return [
         { blank: null }
       ];
     }
-    else if (Object.keys(amenities).length == 1) {
+    else if (Object.keys(amenities).length === 1) {
       return [
         { blank: null },
         { blank: null }

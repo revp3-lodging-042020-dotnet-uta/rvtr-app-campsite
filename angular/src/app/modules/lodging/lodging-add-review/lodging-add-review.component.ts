@@ -1,41 +1,90 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Lodging } from 'src/app/data/lodging.model';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ReviewService } from './../../../services/lodging/review.service';
 import { Review } from 'src/app/data/review.model';
+import { Account } from '../../../data/account.model';
 
 @Component({
-  selector: 'uic-add-review-lodging',
+  selector: 'uic-lodging-add-review',
   templateUrl: './lodging-add-review.component.html',
 })
 export class LodgingAddReviewComponent implements OnInit {
 
-  newReview: FormGroup;
+  @Output() submitted = new EventEmitter<boolean>();
 
-  name: string;
-  date;
-  accountId;
-  lodgingId;
-  comment = new FormControl("", Validators.required);
-  rating = new FormControl(Number,(Validators.required,Validators.max(10),Validators.min(0)));
-  review: Review;
-  constructor(formBuilder: FormBuilder,private reviewService:ReviewService) {
-    this.newReview = formBuilder.group({
-      "rating":this.rating,
-      "comment": this.comment
+  reviewForm = new FormGroup({
+    comment: new FormControl('', [
+      Validators.required
+    ]),
+    rating: new FormControl(Number, [
+      Validators.required,
+      Validators.max(10),
+      Validators.min(0)
+    ]),
+  });
+
+  get ratingField() { return this.reviewForm.get('rating'); }
+  get commentField() { return this.reviewForm.get('comment'); }
+
+  public account: Account;
+  public lodge: Lodging;
+
+  currentDate = new Date(Date.now());
+
+  constructor(private reviewService: ReviewService) { }
+  ngOnInit(): void { }
+
+  canSubmit() {
+    return this.reviewForm.controls.comment.valid &&
+           this.reviewForm.controls.rating.valid &&
+           !this.reviewForm.pristine;
+  }
+
+  submitReview() {
+    const now = new Date(Date.now());
+    const year = `${now.getFullYear()}`;
+    const month = (now.getMonth() + 1 + '').padStart(2, '0');
+    const day = (now.getDate() + '').padStart(2, '0');
+    const hour = (now.getHours() + '').padStart(2, '0');
+    const minutes = (now.getMinutes() + '').padStart(2, '0');
+    const seconds = (now.getSeconds() + '').padStart(2, '0');
+    const millis = (now.getMilliseconds() + '').padStart(3, '0');
+    const dateStr = `${year}-${month}-${day}T${hour}:${minutes}:${seconds}.${millis}Z`;
+    const review: Review = {
+      id: '0',
+      accountId: this.account.id,
+      lodgingId: this.lodge.id,
+      comment: this.reviewForm.controls.comment.value,
+      dateCreated: dateStr,
+      rating: this.reviewForm.controls.rating.value,
+    };
+
+    this.reviewService.post(review).subscribe(_ => {
+      this.submitted.emit(true);
     });
   }
-  submitReview() {
-    this.review.rating = this.rating.value;
-    this.review.comment = this.comment.value;
-    this.review.dateCreated = this.date;
-    this.review.accountId = this.accountId;
-    this.review.lodgingId = this.lodgingId;
-    this.reviewService.post(this.review);
+
+  public reset() {
+    this.account = null;
+    this.lodge = null;
+    this.currentDate = new Date(Date.now());
+    this.reviewForm.reset();
+    this.reviewForm.markAsPristine();
+    Object.keys(this.reviewForm.controls).forEach(key => {
+      this.reviewForm.get(key).setErrors(null);
+    });
   }
 
-  ngOnInit(): void {
-    this.date = Date.now();
-    this.name = "Anonymous";
+  public setAccount(account: Account): void {
+    console.log(`set account to ${account}`);
+    this.account = account;
   }
+
+  public setLodge(lodge: Lodging): void {
+    this.lodge = lodge;
+  }
+
+
+
 }
