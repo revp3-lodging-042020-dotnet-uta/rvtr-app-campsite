@@ -28,7 +28,7 @@ export class LodgingService {
    */
   delete(id: string): Observable<Lodging> {
     return this.apiUrl$.pipe(
-      map(url => id ? `${url}/${id}` : url),
+      map(url => `${url}/${id}`),
       concatMap((url) => this.http.delete<Lodging>(url, { params: { id } }))
     );
   }

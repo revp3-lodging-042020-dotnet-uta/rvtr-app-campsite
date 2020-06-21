@@ -125,4 +125,41 @@ describe('LodgingComponent', () => {
     expect(component.countAmenities(Amenities[2])).toEqual(Amenities[1]);
     expect(component.countAmenities(Amenities[3])).toEqual(Amenities[0]);
   });
+
+  it('should go forward a page and fetch more entries', () => {
+    component.lodgingCache.push(null);
+    component.currentPageIndex = 0;
+    component.pageSize = 1;
+    component.allLodgesLoaded = false;
+
+    component.nextPage();
+
+    expect(component.currentPageIndex).toEqual(1);
+  });
+
+  it('should go forward a page and use cache entries', () => {
+    component.lodgingCache.push(null, null, null, null, null, null, null);
+    component.currentPageIndex = 0;
+    component.pageSize = 1;
+
+    component.nextPage();
+
+    expect(component.currentPageIndex).toEqual(1);
+  });
+
+  it('should mark last page index', () => {
+    component.currentPageIndex = 0;
+    component.pageSize = 1;
+
+    component.processLodgeResponse([]);
+    expect(component.allLodgesLoaded).toBeTrue();
+  });
+
+  it('should go back a page', () => {
+    component.currentPageIndex = 1;
+    component.pageSize = 1;
+    component.previousPage();
+
+    expect(component.currentPageIndex).toEqual(0);
+  });
 });

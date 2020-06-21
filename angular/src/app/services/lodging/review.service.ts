@@ -30,7 +30,7 @@ export class ReviewService {
    */
   delete(id: string): Observable<Review> {
     return this.apiUrl$.pipe(
-      map(url => id ? `${url}/${id}` : url),
+      map(url => `${url}/${id}`),
       concatMap((url) => this.http.delete<Review>(url, { params: { id } }))
     );
   }
