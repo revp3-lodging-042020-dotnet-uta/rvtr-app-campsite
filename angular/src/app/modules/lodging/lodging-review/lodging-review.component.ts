@@ -12,6 +12,7 @@ export class LodgingReviewComponent implements OnInit {
 
   accountInfo: Account;
   @Input() review: Review;
+  @Input() displayComment = false;
 
   constructor(private acctService: AccountService) { }
 

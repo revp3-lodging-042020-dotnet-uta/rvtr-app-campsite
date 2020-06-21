@@ -3,6 +3,8 @@ import { Review } from 'src/app/data/review.model';
 import { ReviewService } from 'src/app/services/lodging/review.service';
 import { HttpParams } from '@angular/common/http';
 import { ReviewQueryParams } from '../@types/review-query-params';
+import { ReviewSortKey } from '../@types/review-sort-key';
+import { SortOrder } from '../@types/sort-order';
 
 @Component({
   selector: 'uic-lodging-review-list',
@@ -30,6 +32,8 @@ export class LodgingReviewListComponent implements OnInit {
     params = params.set(ReviewQueryParams.Limit, this.limit.toString());
     params = params.set(ReviewQueryParams.Offset, this.offset.toString());
     params = params.set(ReviewQueryParams.LodgingId, this.lodgeId.toString());
+    params = params.set(ReviewQueryParams.SortKey, ReviewSortKey.DateCreated);
+    params = params.set(ReviewQueryParams.SortOrder, SortOrder.Descending);
 
     this.reviewService.get(undefined, params).subscribe(response => {
 
