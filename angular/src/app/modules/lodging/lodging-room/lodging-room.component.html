@@ -24,17 +24,17 @@
       <p class="heading">Amenity</p>
       <div *ngIf="room && room.amenities">
         <span *ngFor="let amenity of room.amenities; let i = index" class="icon">
-          <i *ngIf="3 > i" aria-hidden="true" class="fas fa-{{getIconName(amenity.amenity)}}"></i>
+          <em *ngIf="3 > i" aria-hidden="true" class="fas fa-{{getIconName(amenity.amenity)}}"></em>
         </span>
         <span *ngFor="let blank of countAmenities(room.amenities)" class="icon">
-          <i></i>
+          <em></em>
         </span>
       </div>
 
       <div *ngIf="!room || !room.amenities">
-        <span class="icon"> <i></i> </span>
-        <span class="icon"> <i></i> </span>
-        <span class="icon"> <i></i> </span>
+        <span class="icon"> <em></em> </span>
+        <span class="icon"> <em></em> </span>
+        <span class="icon"> <em></em> </span>
       </div>
     </div>
   </div>
