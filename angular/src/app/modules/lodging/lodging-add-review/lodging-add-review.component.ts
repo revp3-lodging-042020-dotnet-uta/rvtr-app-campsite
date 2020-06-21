@@ -77,7 +77,6 @@ export class LodgingAddReviewComponent implements OnInit {
   }
 
   public setAccount(account: Account): void {
-    console.log(`set account to ${account}`);
     this.account = account;
   }
 

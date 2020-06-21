@@ -14,8 +14,8 @@ import { SortOrder } from '../@types/sort-order';
 export class LodgingReviewListComponent implements OnInit {
 
   public reviews: Review[] = [];
-  private limit = 3;
-  private offset = 0;
+  public limit = 3;
+  public offset = 0;
   public allReviewsLoaded = false;
   public lodgeId = 0;
 

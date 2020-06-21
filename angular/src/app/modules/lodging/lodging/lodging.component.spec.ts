@@ -111,7 +111,7 @@ describe('LodgingComponent', () => {
   it('should load lodgings', () => {
     fixture.detectChanges();
     component.ngOnInit();
-    expect(component.lodgings.length).toEqual(1);
+    expect(component.lodgings.length).toEqual(2);
   });
 
   it('should get icon name from amenity', () => {

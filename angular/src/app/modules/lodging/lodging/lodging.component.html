@@ -2,7 +2,7 @@
   <div class="hero-head">
 
     <div class="container">
-      <!--<uic-lodging-search-form (submitted)="onSearchSubmit($event)"></uic-lodging-search-form>-->
+      <uic-lodging-search-form (submitted)="onSearchSubmit($event)"></uic-lodging-search-form>
     </div>
 
     <div class="container" *ngFor="let lodge of lodgings">
@@ -153,8 +153,8 @@
           <div class="tile is-parent">
             <div (click)="reviewModal.openModal($event, lodge, account)" class="tile box is-child">
               <h2 class="title is-4">Reviews</h2>
-              <!--<uic-lodging-review [review]="lodge.reviews[0]"></uic-lodging-review>-->
-              <!--<uic-lodging-review [review]="lodge.reviews[1]"></uic-lodging-review>-->
+              <uic-lodging-review *ngIf="lodge.reviews" [review]="lodge.reviews[0]"></uic-lodging-review>
+              <uic-lodging-review *ngIf="lodge.reviews" [review]="lodge.reviews[1]"></uic-lodging-review>
             </div>
           </div>
         </div>
@@ -168,4 +168,4 @@
   </div>
 </section>
 
-<!--<uic-lodging-review-modal #reviewModal></uic-lodging-review-modal>-->
+<uic-lodging-review-modal #reviewModal></uic-lodging-review-modal>
