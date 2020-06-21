@@ -41,7 +41,11 @@ export class LodgingAddReviewComponent implements OnInit {
   /**
    * Determines if the review can be submitted based on form validations.
    */
-  canSubmit() {
+  canSubmit(): boolean {
+    if (this.reviewForm.controls.comment.value === null) {
+      return false;
+    }
+
     return this.reviewForm.controls.comment.valid &&
            this.reviewForm.controls.rating.valid &&
            !this.reviewForm.pristine;
