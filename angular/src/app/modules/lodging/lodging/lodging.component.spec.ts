@@ -6,6 +6,8 @@ import { LodgingQueryParams } from '../@types/lodging-query-params';
 import { of } from 'rxjs';
 import { Lodging } from 'src/app/data/lodging.model';
 import { LodgingService } from 'src/app/services/lodging/lodging.service';
+import { Account } from 'src/app/data/account.model';
+import { AccountService } from 'src/app/services/account/account.service';
 
 describe('LodgingComponent', () => {
   let component: LodgingComponent;
@@ -48,6 +50,26 @@ describe('LodgingComponent', () => {
     }
   };
 
+  const accountServiceMock = {
+    get() {
+      const accounts: Account[] = [{
+        id: '1',
+        address: {
+          id: '1',
+          city: 'Dallas',
+          country: 'US',
+          postalCode: '77777',
+          stateProvince: 'Texas',
+          street: '123 Testing st.',
+        },
+        name: 'Lucy C.',
+        payments: [],
+        profiles: [],
+      }];
+      return of( accounts );
+    }
+  };
+
   const Amenities = [
     [],
     [{blank: null}],
@@ -59,7 +81,9 @@ describe('LodgingComponent', () => {
     TestBed.configureTestingModule({
       declarations: [LodgingComponent],
       imports: [HttpClientTestingModule],
-      providers: [{provide: LodgingService, useValue: lodgingServiceMock }]
+      providers: [{provide: LodgingService, useValue: lodgingServiceMock },
+                  {provide: AccountService, useValue: accountServiceMock }
+      ]
     }).compileComponents();
   }));
 

@@ -27,13 +27,19 @@ export class LodgingReviewModalComponent implements OnInit {
     }
     this.lodgingReviewModal.nativeElement.classList.add('is-active');
 
-    this.lodgingReviewList.reset();
-    this.lodgingReviewList.setLodgeId(parseInt(lodge.id, 10));
-    this.lodgingReviewList.loadReviews();
+    if (this.lodgingReviewList)
+    {
+      this.lodgingReviewList.reset();
+      this.lodgingReviewList.setLodgeId(parseInt(lodge.id, 10));
+      this.lodgingReviewList.loadReviews();
+    }
 
-    this.lodgingAddReviewComponent.reset();
-    this.lodgingAddReviewComponent.setAccount(account);
-    this.lodgingAddReviewComponent.setLodge(lodge);
+    if (this.lodgingAddReviewComponent)
+    {
+      this.lodgingAddReviewComponent.reset();
+      this.lodgingAddReviewComponent.setAccount(account);
+      this.lodgingAddReviewComponent.setLodge(lodge);
+    }
   }
 
   public closeModal(event?: MouseEvent): void {
