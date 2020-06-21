@@ -1,3 +1,4 @@
+import { Review } from './../../../data/review.model';
 import { LodgingService } from './../../../services/lodging/lodging.service';
 import { Component, OnInit } from '@angular/core';
 import { Lodging } from '../../../data/lodging.model';
@@ -120,6 +121,16 @@ export class LodgingComponent implements OnInit {
    * @param response Lodgings returned from prefetchLodgings
    */
   processLodgeResponse(response: Lodging[]) {
+    // Show the most recent reviews first.
+    response.forEach(lodge => {
+      const compareDescending = (lhs: Review, rhs: Review): number => {
+        const lhsEpoch = Date.parse(lhs.dateCreated);
+        const rhsEpoch = Date.parse(rhs.dateCreated);
+        return rhsEpoch - lhsEpoch;
+      };
+      lodge.reviews = lodge.reviews.sort(compareDescending);
+    });
+
     // Add the new lodgings to the cache.
     this.lodgingCache = this.lodgingCache.concat(response);
     // Mark the last page available based on the response.
