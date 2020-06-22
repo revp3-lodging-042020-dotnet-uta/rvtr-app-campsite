@@ -149,4 +149,45 @@ describe('LodgingComponent', () => {
 
     expect(component.currentPageIndex).toEqual(0);
   });
+
+  it('should scroll to the top', () => {
+    component.pageViewToFirstResult();
+  });
+
+  it('should sort reviews', () => {
+    const lodgeWithReviews: Lodging[] = [{
+      id: '0',
+      location: {
+        id: '1',
+        address: null,
+        latitude: 0,
+        longitude: 1,
+        locale: 'locale',
+      },
+      name: 'name',
+      description: 'description',
+      rentals: null,
+      reviews: [
+        {
+          id: '0',
+          accountId: '1',
+          lodgingId: '1',
+          comment: 'comment',
+          dateCreated: new Date(Date.now()).toString(),
+          rating: 1,
+        },
+        {
+          id: '1',
+          accountId: '1',
+          lodgingId: '1',
+          comment: 'comment',
+          dateCreated: new Date(Date.now()).toString(),
+          rating: 1,
+        }
+      ],
+      amenities: null,
+      images: null,
+    }];
+    component.processLodgeResponse(lodgeWithReviews);
+  });
 });

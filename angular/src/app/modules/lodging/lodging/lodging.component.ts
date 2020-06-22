@@ -15,6 +15,10 @@ import { Account } from '../../../data/account.model';
 })
 export class LodgingComponent implements OnInit {
 
+  // y-offset of the beginning of the lodge search results.
+  // This is used to set the view to the first result when changing pages.
+  public lodgeSearchResultYOffset = 157;
+
   // The number of lodges that should be displayed at one time.
   public pageSize = 2;
 
@@ -43,10 +47,8 @@ export class LodgingComponent implements OnInit {
     private readonly lodgingService: LodgingService,
     private readonly accountService: AccountService
   ) { }
-  goToTop()
-  {
-    window.scrollTo(0, 0);
-  }
+
+
   ngOnInit(): void {
     this.prefetchLodgings().subscribe(response => {
       this.processLodgeResponse(response);
@@ -74,6 +76,14 @@ export class LodgingComponent implements OnInit {
         };
       }
     });
+  }
+
+  /**
+   * Moves the view to the top of the page.
+   */
+  pageViewToFirstResult(): void
+  {
+    window.scrollTo(0, this.lodgeSearchResultYOffset);
   }
 
   /**
@@ -131,7 +141,9 @@ export class LodgingComponent implements OnInit {
         const rhsEpoch = Date.parse(rhs.dateCreated);
         return rhsEpoch - lhsEpoch;
       };
-      lodge.reviews = lodge.reviews.sort(compareDescending);
+      if (lodge.reviews) {
+        lodge.reviews = lodge.reviews.sort(compareDescending);
+      }
     });
 
     // Add the new lodgings to the cache.
