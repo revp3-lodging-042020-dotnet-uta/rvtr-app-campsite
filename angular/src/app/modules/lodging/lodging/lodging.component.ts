@@ -142,7 +142,7 @@ export class LodgingComponent implements OnInit {
         return rhsEpoch - lhsEpoch;
       };
       if (lodge.reviews) {
-        lodge.reviews = lodge.reviews.sort(compareDescending);
+        lodge.reviews.sort(compareDescending);
       }
     });
 
