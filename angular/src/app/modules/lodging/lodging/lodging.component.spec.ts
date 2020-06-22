@@ -3,7 +3,7 @@ import { LodgingComponent } from './lodging.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpParams } from '@angular/common/http';
 import { LodgingQueryParams } from '../@types/lodging-query-params';
-import { of } from 'rxjs';
+import { of, empty } from 'rxjs';
 import { Lodging } from 'src/app/data/lodging.model';
 import { LodgingService } from 'src/app/services/lodging/lodging.service';
 import { Account } from 'src/app/data/account.model';
@@ -189,5 +189,12 @@ describe('LodgingComponent', () => {
       images: null,
     }];
     component.processLodgeResponse(lodgeWithReviews);
+  });
+
+  it('should load mock account', () => {        
+    spyOn(accountServiceMock, 'get').and.returnValue(of([]));
+
+    component.ngOnInit();
+    expect(component.lodgings.length).toEqual(2);
   });
 });
