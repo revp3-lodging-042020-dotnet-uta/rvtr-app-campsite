@@ -6,30 +6,30 @@
     </figure>
   </div>
   <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">Beds</p>
-      <p *ngIf="room && room.bedType" class="title is-6">{{room.bedCount}} {{room.bedType.bedType}}</p>
+    <div style="align-content:baseline">
+      <p class="heading is-6"style="height:10px">Beds</p>
+      <br>
+      <p *ngIf="room && room.bedType" class="title is-6"style="height:10px">{{room.bedCount}} {{room.bedType.bedType}}</p>
       <p *ngIf="!room || !room.bedType" class="title is-6">&nbsp;</p>
     </div>
   </div>
   <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">Room</p>
-      <p *ngIf="room" class="title is-6">{{room.roomNumber}}</p>
+    <div style="align-content:baseline">
+      <p class="heading is-6"style="height:10px">Room</p>
+      <br>
+      <p *ngIf="room" class="title is-6"style="height:10px">{{room.roomNumber}}</p>
       <p *ngIf="!room" class="title is-6">&nbsp;</p>
     </div>
   </div>
-  <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">Amenity</p>
-      <div *ngIf="room && room.amenities">
-        <span *ngFor="let amenity of room.amenities; let i = index" class="icon">
+  <div class="level-item">
+    <div style="align-content:baseline">
+      <p class="heading is-6" style="height:10px">Amenity</p>
+      <br>
+      <div *ngIf="room && room.amenities" style="width:100px;height:10px;align-content:flex-start">
+        <span *ngFor="let amenity of room.amenities; let i = index" class="uic-icon">
           <em *ngIf="3 > i" aria-hidden="true" class="fas fa-{{getIconName(amenity.amenity)}}"></em>
         </span>
-        <span *ngFor="let blank of countAmenities(room.amenities)" class="icon">
-          <em></em>
-        </span>
-      </div>
+        </div>
 
       <div *ngIf="!room || !room.amenities">
         <span class="icon"> <em></em> </span>
