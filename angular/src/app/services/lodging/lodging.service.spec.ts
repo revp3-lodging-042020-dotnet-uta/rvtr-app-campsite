@@ -78,7 +78,7 @@ describe('LodgingService', () => {
     let req: TestRequest;
     let reqOne: TestRequest;
     let params = new HttpParams();
-    
+
     params = params.set('City', 'LA');
 
     service.get().subscribe((res) => {

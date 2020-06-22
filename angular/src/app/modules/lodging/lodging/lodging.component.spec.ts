@@ -191,7 +191,7 @@ describe('LodgingComponent', () => {
     component.processLodgeResponse(lodgeWithReviews);
   });
 
-  it('should load mock account', () => {        
+  it('should load mock account', () => {
     spyOn(accountServiceMock, 'get').and.returnValue(of([]));
 
     component.ngOnInit();

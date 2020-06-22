@@ -111,5 +111,4 @@ describe('LodgingReviewModalComponent', () => {
     expect(component.lodgingReviewModal.nativeElement.classList).toContain('is-active');
 
   });
-  
 });

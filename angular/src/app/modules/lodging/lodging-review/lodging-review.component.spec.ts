@@ -76,7 +76,7 @@ describe('LodgingReviewComponent', () => {
       rating: 1,
     };
     spyOn(mockAccountService, 'get').and.returnValue(new Observable(sub => {
-      sub.next([])
+      sub.next([]);
     }));
     component.loadAccountInfo();
   });
