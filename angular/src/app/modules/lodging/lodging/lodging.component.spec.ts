@@ -197,4 +197,15 @@ describe('LodgingComponent', () => {
     component.ngOnInit();
     expect(component.lodgings.length).toEqual(2);
   });
+
+  it('should do nothing on prefetch if next pages already loaded', () => {
+    component.lodgingCache.push(null);
+    component.currentPageIndex = 0;
+    component.pageSize = 1;
+    component.allLodgesLoaded = true;
+
+    component.nextPage();
+
+    expect(component.currentPageIndex).toEqual(1);
+  });
 });
