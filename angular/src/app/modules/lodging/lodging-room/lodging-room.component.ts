@@ -3,7 +3,8 @@ import { Bedroom } from '../../../data/bedroom.model';
 
 @Component({
   selector: 'uic-lodging-room',
-  templateUrl: './lodging-room.component.html'
+  templateUrl: './lodging-room.component.html',
+    styleUrls: ['./lodging-room.component.scss']
 })
 export class LodgingRoomComponent implements OnInit {
 
@@ -20,30 +21,6 @@ export class LodgingRoomComponent implements OnInit {
     }
     else {
       return amenity.toLowerCase();
-    }
-  }
-
-  countAmenities(amenities: object): object {
-    if (Object.keys(amenities).length >= 3) {
-      return [];
-    }
-    else if (Object.keys(amenities).length === 2) {
-      return [
-        { blank: null }
-      ];
-    }
-    else if (Object.keys(amenities).length === 1) {
-      return [
-        { blank: null },
-        { blank: null }
-      ];
-    }
-    else {
-      return [
-        { blank: null },
-        { blank: null },
-        { blank: null }
-      ];
     }
   }
 }
