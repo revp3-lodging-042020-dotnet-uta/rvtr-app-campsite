@@ -27,19 +27,4 @@ describe('LodgingRoomComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should get blanks up to 3 to fill amenities', () => {
-    const Amenities = [
-      [],
-      [{blank: null}],
-      [{blank: null}, {blank: null}],
-      [{blank: null}, {blank: null}, {blank: null}]
-    ];
-
-    expect(component.countAmenities(Amenities[0])).toEqual(Amenities[3]);
-    expect(component.countAmenities(Amenities[1])).toEqual(Amenities[2]);
-    expect(component.countAmenities(Amenities[2])).toEqual(Amenities[1]);
-    expect(component.countAmenities(Amenities[3])).toEqual(Amenities[0]);
-  });
-
 });
