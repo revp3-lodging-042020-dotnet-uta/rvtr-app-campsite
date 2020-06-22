@@ -9,14 +9,12 @@ import { Account } from '../../../data/account.model';
   templateUrl: './lodging-review-modal.component.html'
 })
 export class LodgingReviewModalComponent implements OnInit {
-  [x: string]: any;
 
   @ViewChild('lodgingReviewModal') lodgingReviewModal: ElementRef;
   @ViewChild(LodgingReviewListComponent) lodgingReviewList: LodgingReviewListComponent;
   @ViewChild(LodgingAddReviewComponent) lodgingAddReviewComponent: LodgingAddReviewComponent;
 
   addingReview = false;
-  component: any;
 
   constructor() { }
 
