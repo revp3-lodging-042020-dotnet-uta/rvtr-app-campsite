@@ -27,4 +27,9 @@ describe('LodgingRoomComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should get icon name from room amenity', () => {
+    expect(component.getIconName('Pool')).toEqual('swimmer');
+    expect(component.getIconName('Coffee')).toEqual('coffee');
+  });
 });

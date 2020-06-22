@@ -83,4 +83,33 @@ describe('LodgingReviewModalComponent', () => {
     component.closeModal(new MouseEvent('click'));
     expect(component.lodgingReviewModal.nativeElement.classList).not.toContain('is-active');
   });
+
+  it('should not reset anything when opening modal', () => {
+    const account = {
+      id: '1',
+      address: null,
+      name: 'Lucy C.',
+      payments: [],
+      profiles: [],
+    };
+
+    const lodge = {
+        id: '1',
+        location: null,
+        name: 'name',
+        description: 'description',
+        rentals: null,
+        reviews: null,
+        amenities: null,
+        images: null,
+    };
+
+    component.lodgingReviewList = null;
+    component.lodgingAddReviewComponent = null;
+
+    component.openModal(null, lodge, account);
+    expect(component.lodgingReviewModal.nativeElement.classList).toContain('is-active');
+
+  });
+  
 });

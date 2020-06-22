@@ -65,4 +65,19 @@ describe('LodgingReviewComponent', () => {
     };
     component.loadAccountInfo();
   });
+
+  it ('should not load account info when empty', () => {
+    component.review = {
+      id: '0',
+      accountId: '1',
+      lodgingId: '1',
+      comment: 'comment',
+      dateCreated: 'now',
+      rating: 1,
+    };
+    spyOn(mockAccountService, 'get').and.returnValue(new Observable(sub => {
+      sub.next([])
+    }));
+    component.loadAccountInfo();
+  });
 });
