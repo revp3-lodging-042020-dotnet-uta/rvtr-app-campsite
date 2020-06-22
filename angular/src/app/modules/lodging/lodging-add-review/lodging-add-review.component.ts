@@ -52,21 +52,12 @@ export class LodgingAddReviewComponent implements OnInit {
   }
 
   submitReview() {
-    const now = new Date(Date.now());
-    const year = `${now.getFullYear()}`;
-    const month = `${(now.getMonth() + 1)}`.padStart(2, '0');
-    const day = `${now.getDate()}`.padStart(2, '0');
-    const hour = `${now.getHours()}`.padStart(2, '0');
-    const minutes = `${now.getMinutes()}`.padStart(2, '0');
-    const seconds = `${now.getSeconds()}`.padStart(2, '0');
-    const millis = `${now.getMilliseconds()}`.padStart(3, '0');
-    const dateStr = `${year}-${month}-${day}T${hour}:${minutes}:${seconds}.${millis}Z`;
     const review: Review = {
       id: '0',
       accountId: this.account.id,
       lodgingId: this.lodge.id,
       comment: this.reviewForm.controls.comment.value,
-      dateCreated: dateStr,
+      dateCreated: new Date(Date.now()),
       rating: this.reviewForm.controls.rating.value,
     };
 

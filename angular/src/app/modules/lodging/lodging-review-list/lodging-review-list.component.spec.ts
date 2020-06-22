@@ -16,7 +16,7 @@ class MockReviewService {
           accountId: '1',
           lodgingId: '1',
           comment: 'comment',
-          dateCreated: 'now',
+          dateCreated: new Date(Date.now()),
           rating: 1,
         },
         {
@@ -24,7 +24,7 @@ class MockReviewService {
           accountId: '1',
           lodgingId: '1',
           comment: 'comment',
-          dateCreated: 'now',
+          dateCreated: new Date(Date.now()),
           rating: 1,
         },
         {
@@ -32,7 +32,7 @@ class MockReviewService {
           accountId: '1',
           lodgingId: '1',
           comment: 'comment',
-          dateCreated: 'now',
+          dateCreated: new Date(Date.now()),
           rating: 1,
         },
         {
@@ -40,7 +40,7 @@ class MockReviewService {
           accountId: '1',
           lodgingId: '1',
           comment: 'comment',
-          dateCreated: 'now',
+          dateCreated: new Date(Date.now()),
           rating: 1,
         },
         {
@@ -48,7 +48,7 @@ class MockReviewService {
           accountId: '1',
           lodgingId: '1',
           comment: 'comment',
-          dateCreated: 'now',
+          dateCreated: new Date(Date.now()),
           rating: 1,
         },
       ]);

@@ -137,8 +137,8 @@ export class LodgingComponent implements OnInit {
     // Show the most recent reviews first.
     response.forEach(lodge => {
       const compareDescending = (lhs: Review, rhs: Review): number => {
-        const lhsEpoch = Date.parse(lhs.dateCreated);
-        const rhsEpoch = Date.parse(rhs.dateCreated);
+        const lhsEpoch = new Date(lhs.dateCreated).getTime();
+        const rhsEpoch = new Date(rhs.dateCreated).getTime();
         return rhsEpoch - lhsEpoch;
       };
       if (lodge.reviews) {

@@ -173,7 +173,7 @@ describe('LodgingComponent', () => {
           accountId: '1',
           lodgingId: '1',
           comment: 'comment',
-          dateCreated: new Date(Date.now()).toString(),
+          dateCreated: new Date(Date.now()),
           rating: 1,
         },
         {
@@ -181,7 +181,7 @@ describe('LodgingComponent', () => {
           accountId: '1',
           lodgingId: '1',
           comment: 'comment',
-          dateCreated: new Date(Date.now()).toString(),
+          dateCreated: new Date(Date.now()),
           rating: 1,
         }
       ],

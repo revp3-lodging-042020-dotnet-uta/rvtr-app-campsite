@@ -18,7 +18,7 @@ describe('ReviewService', () => {
       accountId: '1',
       lodgingId: '1',
       comment: 'comment',
-      dateCreated: new Date().toString(),
+      dateCreated: new Date(Date.now()),
       rating: 5,
     },
   ];

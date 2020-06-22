@@ -60,7 +60,7 @@ describe('LodgingReviewComponent', () => {
       accountId: '1',
       lodgingId: '1',
       comment: 'comment',
-      dateCreated: 'now',
+      dateCreated: new Date(Date.now()),
       rating: 1,
     };
     component.loadAccountInfo();
@@ -72,7 +72,7 @@ describe('LodgingReviewComponent', () => {
       accountId: '1',
       lodgingId: '1',
       comment: 'comment',
-      dateCreated: 'now',
+      dateCreated: new Date(Date.now()),
       rating: 1,
     };
     spyOn(mockAccountService, 'get').and.returnValue(new Observable(sub => {

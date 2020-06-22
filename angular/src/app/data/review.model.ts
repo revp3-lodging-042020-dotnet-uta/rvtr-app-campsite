@@ -15,6 +15,6 @@ export interface Review {
   accountId: string;
   lodgingId: string;
   comment: string;
-  dateCreated: string;
+  dateCreated: Date;
   rating: number;
 }

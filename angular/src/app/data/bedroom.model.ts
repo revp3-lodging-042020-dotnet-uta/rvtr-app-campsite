@@ -9,6 +9,7 @@ import { BedType } from './bedtype.model';
  * id: string;
  * bedCount: number;
  * bedType: BedType;
+ * roomNumber: string;
  * images: Image[];
  * amenities: Amenity[];
  * ```
