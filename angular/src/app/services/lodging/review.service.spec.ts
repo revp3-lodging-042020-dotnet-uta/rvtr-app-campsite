@@ -17,6 +17,7 @@ describe('ReviewService', () => {
       id: '0',
       accountId: '1',
       lodgingId: '1',
+      lodging: null,
       comment: 'comment',
       dateCreated: new Date(Date.now()),
       rating: 5,

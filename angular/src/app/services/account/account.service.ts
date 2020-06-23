@@ -189,6 +189,7 @@ export class AccountService {
       id: '1',
       accountId: '1',
       lodgingId: '1',
+      lodging: null,
       comment: 'good stuff man',
       dateCreated: new Date('6/10/2020'),
       rating: 4
@@ -198,6 +199,7 @@ export class AccountService {
       id: '2',
       accountId: '1',
       lodgingId: '2',
+      lodging: null,
       comment: 'super bad',
       dateCreated: new Date('6/10/2020'),
       rating: 1
