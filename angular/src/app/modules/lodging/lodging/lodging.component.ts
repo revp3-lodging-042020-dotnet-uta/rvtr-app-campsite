@@ -69,6 +69,7 @@ export class LodgingComponent implements OnInit {
             postalCode: '77777',
             stateProvince: 'Texas',
             street: '123 Testing st.',
+            unit: '',
           },
           name: 'Lucy C.',
           payments: [],
